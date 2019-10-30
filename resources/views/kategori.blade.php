@@ -45,8 +45,11 @@
     <div class="modal fade" id="ajaxModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
+            <div class="modal-header bg-primary text-white">
                 <h4 class="modal-title" id="modelHeading"></h4>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+        </button>
             </div>
             <div class="modal-body">
                 <form id="productForm" name="productForm" class="form-horizontal">
@@ -63,7 +66,7 @@
                      </button>
                     </div>
                 </form>
-            </div>
+            </div><div class="modal-footer"></div>
         </div>
     </div>
 </div>
@@ -71,11 +74,7 @@
     </div>
 </div>
 
- <!--modal -->
- 
-            <!--endmodal -->
-
-    </section>
+ </section>
    <!-- /.content -->
    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 </head>

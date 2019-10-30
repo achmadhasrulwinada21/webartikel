@@ -29,7 +29,7 @@
 				</div>
                 @endif
              @if ($message = Session::get('sukses21'))
-				<div class="alert alert-danger alert-block">
+				<div class="alert alert-success alert-block">
 					<button type="button" class="close" data-dismiss="alert">×</button> 
 					<strong>{{ $message }}</strong>
 				</div>
@@ -50,19 +50,18 @@
                         <th>Judul</th>
                         <th>Kategori</th>
                         <th>Foto</th>
-                        <th>isi artikel</th>
-                         <th>Aksi</th>
+                        <th>Aksi</th>
                       </tr> 
                   </thead>
                   
                 </table>
-   </div></div>
-    </div>
+          </div></div>
+         </div>
         </div>
+       </div>
     </div>
-</div>
-
-    </section>
+   </div>
+</section>
    <!-- /.content -->
    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 
@@ -88,10 +87,11 @@
                   'orderable':false,
                   'render': function (data, type, full, meta)
                      {
-                  return '<center><img src="http://localhost:8000/data_file/foto_artikel/'+data+'" style="height:100px;width:100px;"/></center';
+                       @foreach($settingweb as $s)
+                  return '<center><img src="{{ $s->link_web}}/'+data+'" style="height:100px;width:100px;"/></center';
+                  @endforeach
                      }
-                   },
-                    {data: 'action', name: 'isi_artikel', orderable: false, searchable: false},
+                   },               
                   { data: 'id', 
                    "render": function ( data, type, row, meta ) {
                             return '<a href="/artikel/edit/'+data+'" title="edit" class="btn btn-xs btn-warning" style="margin-bottom:4px;margin-right:2px;"><i class="fa fa-edit"></i></a><a data-id="'+data+'" class="btn btn-xs btn-danger" style="margin-bottom:4px;" title="hapus" id="hapusartikel"><i class="fa fa-trash"></i></a>';

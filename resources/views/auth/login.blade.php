@@ -38,11 +38,14 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
+                         <input type="checkbox" class="form-checkbox"> Show password
+                            </div></div>
+                          <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
@@ -70,4 +73,16 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){		
+		$('.form-checkbox').click(function(){
+			if($(this).is(':checked')){
+				$('#password').attr('type','text');
+			}else{
+				$('#password').attr('type','password');
+			}
+		});
+	});
+</script>
 @endsection
