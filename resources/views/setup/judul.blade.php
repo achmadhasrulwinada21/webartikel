@@ -42,7 +42,7 @@
              {{ $errors->first('judul')}}
            </div>
         @endif<br>
-        <label>Judul</label><br>
+        <label>Keterangan</label><br>
 		 <textarea name="keterangan"  class="form-control" placeholder="isi keterangan..." required></textarea>
 		<br><br>
 		<input type="submit" value="Simpan Data" id="saveBtn" class="btn btn-info btn-sm">

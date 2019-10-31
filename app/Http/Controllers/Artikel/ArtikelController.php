@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Artikel;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Artikel;
-use App\Model\V_artikel;
-use App\Model\Kategori;
-use App\Model\Settingweb;
+use App\Model\Artikel\Artikel;
+use App\Model\Artikel\V_artikel;
+use App\Model\Artikel\Kategori;
+use App\Model\Setup\Settingweb;
 use DataTables;
 use Session;
-
+use File;
 class ArtikelController extends Controller
 {
     /**
@@ -38,13 +39,13 @@ class ArtikelController extends Controller
      public function index(){
         $artikel = Artikel::all();
          $settingweb = Settingweb::all();
-        return view('artikel',['artikel' => $artikel,'settingweb' => $settingweb]);
+        return view('artikel.artikel',['artikel' => $artikel,'settingweb' => $settingweb]);
     }
 
      public function tambah(){
         $kategori = Kategori::all();
         $settingweb = Settingweb::all();
-    	return view('tambah_artikel',['kategori' => $kategori,'settingweb' => $settingweb]);
+    	return view('artikel.tambah_artikel',['kategori' => $kategori,'settingweb' => $settingweb]);
   }
 
   public function insert(Request $request) {
@@ -95,7 +96,7 @@ class ArtikelController extends Controller
       $artikel = Artikel::find($id);
       $settingweb = Settingweb::all();
       $kategori = Kategori::all();
-     return view('edit_artikel', ['artikel' => $artikel,'kategori' => $kategori,'settingweb' => $settingweb]);
+     return view('artikel.edit_artikel', ['artikel' => $artikel,'kategori' => $kategori,'settingweb' => $settingweb]);
     }
     
       public function update($id, Request $request){
@@ -116,6 +117,7 @@ class ArtikelController extends Controller
         } 
         else
         {
+            File::delete($artikel->foto);
             $file       = $request->file('foto');
             $path       = 'data_file/foto_artikel/';
             $fileName   =  $path.$file->getClientOriginalName();
@@ -129,6 +131,7 @@ class ArtikelController extends Controller
         } 
         else
         {
+            File::delete($artikel->file_artikel);
             $file2       = $request->file('file_artikel');
             $path2       = 'data_file/file_artikel/';
             $fileName2   =  $path2.$file2->getClientOriginalName();
@@ -148,6 +151,9 @@ class ArtikelController extends Controller
 
      public function delete($id) {
         $artikel = Artikel::find($id);
+
+        File::delete($artikel->foto);
+        File::delete($artikel->file_artikel);
         $artikel->delete();
 
         $callback = [

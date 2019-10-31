@@ -20,56 +20,56 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
-       Route::resource('/artikel','ArtikelController');
-       Route::resource('kategori','KategoriController');
-       Route::resource('/manajemenuser','ManajemenuserController'); 
-       Route::resource('/settingweb','SettingwebController'); 
-       Route::resource('/menu','MenuController');  
-       Route::resource('/judul','JudulController');      
-});
+       Route::resource('/artikel','Artikel\ArtikelController');
+       Route::resource('kategori','Artikel\KategoriController');
+       Route::resource('/manajemenuser','Setup\ManajemenuserController'); 
+       Route::resource('/settingweb','Setup\SettingwebController'); 
+       Route::resource('/menu','Setup\MenuController');  
+       Route::resource('/judul','Setup\JudulController');    
+  });
 
 Route::prefix('manajemenuser')->group(function () {
-      Route::get('/json','ManajemenuserController@json'); 
-      Route::post('/insert','ManajemenuserController@insert');
-      Route::put('/edit/{id}', 'ManajemenuserController@edit');
-      Route::post('/update','ManajemenuserController@update');
-      Route::post('/update2','ManajemenuserController@update2');
-      ROUTE::DELETE('/destroy/{id}', 'ManajemenuserController@destroy');
+      Route::get('/json','Setup\ManajemenuserController@json'); 
+      Route::post('/insert','Setup\ManajemenuserController@insert');
+      Route::put('/edit/{id}', 'Setup\ManajemenuserController@edit');
+      Route::post('/update','Setup\ManajemenuserController@update');
+      Route::post('/update2','Setup\ManajemenuserController@update2');
+      ROUTE::DELETE('/destroy/{id}', 'Setup\ManajemenuserController@destroy');
       });
 
 Route::prefix('kategori')->group(function () {
-      Route::get('/json','KategoriController@json'); 
-      Route::post('/store','KategoriController@store');
-      ROUTE::DELETE('/destroy/{id}', 'KategoriController@destroy');
-      Route::put('/edit/{id}', 'KategoriController@edit');
+      Route::get('/json','Artikel\KategoriController@json'); 
+      Route::post('/store','Artikel\KategoriController@store');
+      ROUTE::DELETE('/destroy/{id}', 'Artikel\KategoriController@destroy');
+      Route::put('/edit/{id}', 'Artikel\KategoriController@edit');
      });
 
 Route::prefix('artikel')->group(function () {
-      Route::get('/json','ArtikelController@json'); 
-      Route::get('/tambah','ArtikelController@tambah');
-      Route::post('/insert','ArtikelController@insert');
-      Route::get('/edit/{id}','ArtikelController@edit');
-      Route::put('/update/{id}', 'ArtikelController@update');
-      ROUTE::DELETE('/hapus/{id}', 'ArtikelController@delete');
+      Route::get('/json','Artikel\ArtikelController@json'); 
+      Route::get('/tambah','Artikel\ArtikelController@tambah');
+      Route::post('/insert','Artikel\ArtikelController@insert');
+      Route::get('/edit/{id}','Artikel\ArtikelController@edit');
+      Route::put('/update/{id}', 'Artikel\ArtikelController@update');
+      ROUTE::DELETE('/hapus/{id}', 'Artikel\ArtikelController@delete');
      });
 
 Route::prefix('settingweb')->group(function () {
-      Route::get('/json','SettingwebController@json'); 
-      Route::post('/update','SettingwebController@update');
+      Route::get('/json','Setup\SettingwebController@json'); 
+      Route::post('/update','Setup\SettingwebController@update');
        });
 
 Route::prefix('menu')->group(function () {
-      Route::get('/json','MenuController@json'); 
-      Route::post('/insert','MenuController@insert');
-      Route::put('/edit/{id}', 'MenuController@edit');
-      ROUTE::DELETE('/destroy/{id}', 'MenuController@destroy');
+      Route::get('/json','Setup\MenuController@json'); 
+      Route::post('/insert','Setup\MenuController@insert');
+      Route::put('/edit/{id}', 'Setup\MenuController@edit');
+      ROUTE::DELETE('/destroy/{id}', 'Setup\MenuController@destroy');
  });
 
  Route::prefix('judul')->group(function () {
-      Route::get('/json','JudulController@json'); 
-      Route::post('/insert','JudulController@insert');
-      Route::put('/edit/{id}', 'JudulController@edit');
-      ROUTE::DELETE('/destroy/{id}', 'JudulController@destroy');
+      Route::get('/json','Setup\JudulController@json'); 
+      Route::post('/insert','Setup\JudulController@insert');
+      Route::put('/edit/{id}', 'Setup\JudulController@edit');
+      ROUTE::DELETE('/destroy/{id}', 'Setup\JudulController@destroy');
  });
 
 

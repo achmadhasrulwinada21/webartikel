@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Setup;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Settingweb;
+use App\Model\Setup\Settingweb;
 use Illuminate\Support\Facades\DB;
 use Session;
+use File;
 
 class SettingwebController extends Controller
 {
@@ -40,7 +42,7 @@ class SettingwebController extends Controller
 
     public function index(){
         $settingweb = Settingweb::all();
-         return view('settingweb',['settingweb' => $settingweb]);
+         return view('setup.settingweb',['settingweb' => $settingweb]);
     }
 
      public function show(){
@@ -65,6 +67,7 @@ class SettingwebController extends Controller
         } 
         else
         {
+            File::delete($settingweb->logo_web);
             $file       = $request->file('logo_web');
             $path       = 'assets/logo_web/';
             $fileName   =  $path.$file->getClientOriginalName();
@@ -76,7 +79,7 @@ class SettingwebController extends Controller
           $settingweb->nm_web = $request->nm_web;
           $settingweb->link_web = $request->link_web; 
           $settingweb->save();
-         Session::flash('sukses','Artikel Telah Diupdate');
+         Session::flash('sukses','Setup Telah Diupdate');
         return redirect('/admin/settingweb');
 
     }

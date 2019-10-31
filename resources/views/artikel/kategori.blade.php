@@ -27,7 +27,7 @@
                 <div class="card-header bg-info">Kategori Artikel</div>
 
                 <div class="card-body">
-                   <a class="btn btn-success btn-sm" href="javascript:void(0)" id="createNewKategori"><i class="fa fa-plus">&nbsp Tambah Data</i></a><br><br>
+                   <a class="btn btn-success btn-sm" href="javascript:void(0)" id="createNewKategori"><i class="fa fa-plus">&nbsp Tambah Kategori</i></a><br><br>
          <div class="table-responsive">
 	        <table  class="table table-striped table-bordered table-hover table-list data-table21">
                   <thead>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Artikel;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Artikel extends Model
     protected $fillable = ['judul','isi_artikel','foto','id_kategori','keyword','file_artikel'];
 
      public function kategori(){
-    	return $this->hasMany('App\Model\Kategori');
+    	return $this->hasMany('App\Model\Artikel\Kategori');
     }
 }

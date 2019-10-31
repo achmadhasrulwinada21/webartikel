@@ -88,7 +88,7 @@
                   'render': function (data, type, full, meta)
                      {
                        @foreach($settingweb as $s)
-                  return '<center><img src="{{ $s->link_web}}/'+data+'" style="height:100px;width:100px;"/></center';
+                  return '<center><img src="{{ $s->link_web}}/'+data+'" style="height:100px;width:100px;"/></center>';
                   @endforeach
                      }
                    },               

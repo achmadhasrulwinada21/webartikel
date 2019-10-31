@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Artikel;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Kategori;
-use App\Model\Settingweb;
+use App\Model\Artikel\Kategori;
+use App\Model\Setup\Settingweb;
 use DataTables;
 
 class KategoriController extends Controller
@@ -40,7 +41,7 @@ class KategoriController extends Controller
      public function index(){
         $kategori = Kategori::all();
         $settingweb = Settingweb::all();
-    	return view('kategori',['kategori' => $kategori,'settingweb' => $settingweb]);
+    	return view('artikel.kategori',['kategori' => $kategori,'settingweb' => $settingweb]);
     }
 
      public function store(Request $request)

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Setup;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
-use App\Model\Settingweb;
-use App\Model\Judul;
+use App\Model\Setup\Settingweb;
+use App\Model\Setup\Judul;
 use DataTables;
 
 class JudulController extends Controller
@@ -41,7 +42,7 @@ class JudulController extends Controller
      public function index(){
          $judul = Judul::all();
          $settingweb = Settingweb::all();
-        return view('judul',['judul' => $judul,'settingweb' => $settingweb]);
+        return view('setup.judul',['judul' => $judul,'settingweb' => $settingweb]);
     }
 
      public function insert(Request $request)

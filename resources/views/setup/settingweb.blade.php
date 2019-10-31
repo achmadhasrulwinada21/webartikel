@@ -5,6 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+             <h1 class="m-0 text-dark">Setup Web</h1>
              </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -28,8 +29,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-info">Web setting</div>
-                @foreach ($settingweb as $sw )
+            @foreach ($settingweb as $sw )
  <form action="/settingweb/update" method="post" class="form-horizontal" enctype="multipart/form-data">
   {{ csrf_field() }}
   <br>

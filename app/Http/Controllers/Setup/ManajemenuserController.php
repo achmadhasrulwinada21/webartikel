@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Setup;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Manajemenuser;
-use App\Model\Settingweb;
+use App\Model\Setup\Manajemenuser;
+use App\Model\Setup\Settingweb;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use DataTables;
@@ -50,7 +51,7 @@ class ManajemenuserController extends Controller
     public function index(){
        $manajemenuser = Manajemenuser::all();
         $settingweb = Settingweb::all();
-    	return view('manajemenuser',['manajemenuser' => $manajemenuser,'settingweb' => $settingweb]);
+    	return view('setup.manajemenuser',['manajemenuser' => $manajemenuser,'settingweb' => $settingweb]);
     }
 
     public function insert(Request $request)

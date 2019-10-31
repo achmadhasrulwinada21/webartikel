@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Artikel;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Kategori extends Model
     protected $fillable = ['kategori'];
 
      public function artikel(){
-    	return $this->belongsTo('App\Model\Artikel');
+    	return $this->belongsTo('App\Model\Artikel\Artikel');
     }
 }

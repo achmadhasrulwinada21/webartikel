@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Settingweb;
+use App\Model\Setup\Settingweb;
 
 class HomeController extends Controller
 {

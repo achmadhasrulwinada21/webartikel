@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Setup;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
-use App\Model\Settingweb;
-use App\Model\Menu;
-use App\Model\Judul;
+use App\Model\Setup\Settingweb;
+use App\Model\Setup\Menu;
+use App\Model\Setup\Judul;
 use DataTables;
 
 class MenuController extends Controller
@@ -55,7 +56,7 @@ class MenuController extends Controller
           ->orderBy('id', 'desc')
           ->get();
          $settingweb = Settingweb::all();
-        return view('menu',['menu' => $menu,'settingweb' => $settingweb,'judul' => $judul,'judul2' => $judul2]);
+        return view('setup.menu',['menu' => $menu,'settingweb' => $settingweb,'judul' => $judul,'judul2' => $judul2]);
     }
 
      public function insert(Request $request)
