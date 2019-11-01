@@ -26,7 +26,7 @@ Route::prefix('admin')->group(function () {
        Route::resource('/settingweb','Setup\SettingwebController'); 
        Route::resource('/menu','Setup\MenuController');  
        Route::resource('/judul','Setup\JudulController');    
-  });
+   });
 
 Route::prefix('manajemenuser')->group(function () {
       Route::get('/json','Setup\ManajemenuserController@json'); 
@@ -51,7 +51,7 @@ Route::prefix('artikel')->group(function () {
       Route::get('/edit/{id}','Artikel\ArtikelController@edit');
       Route::put('/update/{id}', 'Artikel\ArtikelController@update');
       ROUTE::DELETE('/hapus/{id}', 'Artikel\ArtikelController@delete');
-     });
+      });
 
 Route::prefix('settingweb')->group(function () {
       Route::get('/json','Setup\SettingwebController@json'); 

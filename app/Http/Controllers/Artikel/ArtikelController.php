@@ -11,6 +11,10 @@ use App\Model\Setup\Settingweb;
 use DataTables;
 use Session;
 use File;
+use App\Mail\AchmadEmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+
 class ArtikelController extends Controller
 {
     /**
@@ -49,6 +53,7 @@ class ArtikelController extends Controller
   }
 
   public function insert(Request $request) {
+               
     	$this->validate($request,[
             'judul' =>'required',
             'isi_artikel' =>'required',
@@ -57,12 +62,31 @@ class ArtikelController extends Controller
             'id_kategori' => 'required',
             'keyword' => 'required',
          ]);
-         
+
+//join tb_kategori n tb_artikel
+
+ $kategori = DB::table('kategori')
+             ->where('id', '=', $request->id_kategori)
+             ->get(); 
+          
+          foreach($kategori as $k){
+              $id_kat = $k->id;
+           }
+ $menuutama = DB::table('artikel')
+             ->leftJoin('kategori','artikel.id_kategori', '=', 'kategori.id')
+             ->where('artikel.id_kategori', '=',  $id_kat)
+             ->get(); 
+
+             foreach ($menuutama as $item){
+                   $request->kat = $item->kategori;
+              }
+  //end join tb_kategori n tb_artikel 
+
          // menyimpan data file yang diupload ke variabel $file
         $file = $request->file('foto');
         $path       = 'data_file/foto_artikel/';
 		$nama_file = $path.$file->getClientOriginalName();
- 
+        $request->foto=$nama_file;
       	// isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'data_file/foto_artikel';
         $file->move($tujuan_upload,$nama_file);
@@ -80,6 +104,7 @@ class ArtikelController extends Controller
 		$tujuan_upload2 = 'data_file/file_artikel';
 		$file2->move($tujuan_upload2,$nama_file2);
         }
+        
         Artikel::create([
             'judul' => $request->judul,
             'isi_artikel' => $request->isi_artikel,
@@ -89,6 +114,9 @@ class ArtikelController extends Controller
             'keyword' => $request->keyword,
 		]);
           Session::flash('sukses','Artikel Telah Ditambahkan');
+
+          Mail::to("testing@mail.com")->send(new AchmadEmail($request));
+
     	return redirect('/admin/artikel');
     }
 
@@ -163,4 +191,5 @@ class ArtikelController extends Controller
 
         return json_encode($callback, TRUE);
     }
+
 }
