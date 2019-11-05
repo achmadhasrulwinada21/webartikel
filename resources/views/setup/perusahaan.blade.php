@@ -9,7 +9,7 @@
         <a href="{{ url('/settingweb/perusahaan') }}" class="nav-link">Perusahaan</a>
       </li>
        <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/admin/judul') }}" class="nav-link active">Sosmed</a>
+        <a href="{{ url('/settingweb/sosmed') }}" class="nav-link active">Sosmed</a>
       </li>
 </ul>
 
@@ -42,8 +42,9 @@
         <div class="col-md-12">
             <div class="card">
             @foreach ($settingweb as $sw )
- <form action="/settingweb/update2" method="post" class="form-horizontal">
+ <form action="/settingweb/update_perusahaan" method="post" class="form-horizontal" enctype="multipart/form-data">
   {{ csrf_field() }}
+   {{ method_field('PUT') }}
   <br>
             <input type="hidden" name="id" id="id" value="{{ $sw->id }}">
                
@@ -67,7 +68,7 @@
                      <div class="form-group" style="margin-left:12px;margin-right:12px;">
                         <label for="name" class="col-sm-4 control-label">Fax</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="no_fax" name="no_fax" placeholder="Enter NO Fax" value="{{ $sw->fax }}" maxlength="50" required>
+                            <input type="text" class="form-control" id="fax" name="fax" placeholder="Enter NO Fax" value="{{ $sw->fax }}" maxlength="50" required>
                      </div>
                     </div>
                       <div class="form-group" style="margin-left:12px;margin-right:12px;">
@@ -77,7 +78,7 @@
                      </div>
                     </div>
                      <div class="col-sm-offset-2 col-sm-10" style="margin-left:12px;margin-right:12px;">
-                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save changes
+                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create"><span class="fa fa-save">&nbspSave changes</span>
                      </button>
                     </div>
                 </form>

@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function () {
        Route::resource('/servis','Master\ServisController');
        Route::resource('/testimoni','Master\TestimoniController');
        Route::resource('/footerbrand','Master\FooterbrandController'); 
+       Route::resource('/sitemap','Sitemap\SiteheaderController'); 
    });
 
 Route::prefix('manajemenuser')->group(function () {
@@ -61,8 +62,10 @@ Route::prefix('artikel')->group(function () {
 Route::prefix('settingweb')->group(function () {
       Route::get('/json','Setup\SettingwebController@json'); 
       Route::get('/perusahaan','Setup\SettingwebController@perusahaan'); 
-      Route::post('/update','Setup\SettingwebController@update');
-      Route::post('/update2','Setup\SettingwebController@update2');
+      Route::get('/sosmed','Setup\SettingwebController@sosmed');
+      Route::put('/update','Setup\SettingwebController@update');
+      Route::put('/update_perusahaan','Setup\SettingwebController@update_perusahaan');
+      Route::put('/update_sosmed','Setup\SettingwebController@update_sosmed');
        });
 
 Route::prefix('menu')->group(function () {
@@ -119,5 +122,13 @@ Route::prefix('footerbrand')->group(function () {
       Route::put('/update/{id}', 'Master\FooterbrandController@update');
       ROUTE::DELETE('/hapus/{id}', 'Master\FooterbrandController@delete');
       });
-
+Route::prefix('sitemap')->group(function () {
+      Route::get('/json','Sitemap\SiteheaderController@json');
+      Route::post('/insert','Sitemap\SiteheaderController@insert');
+      Route::put('/edit/{id}', 'Sitemap\SiteheaderController@edit');
+      ROUTE::DELETE('/destroy/{id}', 'Sitemap\SiteheaderController@destroy');
+      Route::get('/show/{id}','Sitemap\SiteheaderController@show'); 
+      Route::post('/insert_detail','Sitemap\SiteheaderController@insert_detail');
+      ROUTE::DELETE('/delete/{id}', 'Sitemap\SiteheaderController@delete');
+     });
 

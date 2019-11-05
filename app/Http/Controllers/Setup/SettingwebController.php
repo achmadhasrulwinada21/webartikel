@@ -50,6 +50,11 @@ class SettingwebController extends Controller
          return view('setup.perusahaan',['settingweb' => $settingweb]);
     }
 
+    public function sosmed(){
+        $settingweb = Settingweb::all();
+         return view('setup.sosmed',['settingweb' => $settingweb]);
+    }
+
      public function show(){
 		$settingweb = Settingweb::all();
         return view('layouts.index',['settingweb' => $settingweb]);
@@ -89,7 +94,7 @@ class SettingwebController extends Controller
 
     }
 
-    public function update2(Request $request)
+    public function update_perusahaan(Request $request)
     {
           $this->validate($request,[
                 'nm_perusahaan' => 'required',
@@ -110,6 +115,73 @@ class SettingwebController extends Controller
           $settingweb->save();
          Session::flash('sukses21','Setup Telah Diupdate');
         return redirect('/settingweb/perusahaan');
+
+    }
+
+     public function update_sosmed(Request $request)
+    {
+          $this->validate($request,[
+                'logo_sosmed1' =>'file|image|mimes:jpeg,png,jpg|max:2048',
+                'link_sosmed1' => 'required',
+                'logo_sosmed2' =>'file|image|mimes:jpeg,png,jpg|max:2048',
+                'link_sosmed2' => 'required',
+                'logo_sosmed3' =>'file|image|mimes:jpeg,png,jpg|max:2048',
+                'link_sosmed3' => 'required',
+               ]);
+
+        $settingweb = Settingweb::find($request->id);
+
+//logo facebook
+     if($request->file('logo_sosmed1') == "")
+        {
+            $settingweb->logo_sosmed1 = $settingweb->logo_sosmed1;
+        } 
+        else
+        {
+            File::delete($settingweb->logo_sosmed1);
+            $file       = $request->file('logo_sosmed1');
+            $path       = 'data_file/logo_sosmed/';
+            $fileName   =  $path.$file->getClientOriginalName();
+            $request->file('logo_sosmed1')->move($path, $fileName);
+            $settingweb->logo_sosmed1 = $fileName;
+        }
+
+//logo instagram
+         if($request->file('logo_sosmed2') == "")
+        {
+            $settingweb->logo_sosmed2 = $settingweb->logo_sosmed2;
+        } 
+        else
+        {
+            File::delete($settingweb->logo_sosmed2);
+            $file       = $request->file('logo_sosmed2');
+            $path       = 'data_file/logo_sosmed/';
+            $fileName   =  $path.$file->getClientOriginalName();
+            $request->file('logo_sosmed2')->move($path, $fileName);
+            $settingweb->logo_sosmed2 = $fileName;
+        }
+
+//logo twitter
+         if($request->file('logo_sosmed3') == "")
+        {
+            $settingweb->logo_sosmed3 = $settingweb->logo_sosmed3;
+        } 
+        else
+        {
+            File::delete($settingweb->logo_sosmed3);
+            $file       = $request->file('logo_sosmed3');
+            $path       = 'data_file/logo_sosmed/';
+            $fileName   =  $path.$file->getClientOriginalName();
+            $request->file('logo_sosmed3')->move($path, $fileName);
+            $settingweb->logo_sosmed3 = $fileName;
+        }
+          $settingweb->id = $request->id;
+          $settingweb->link_sosmed1 = $request->link_sosmed1;
+          $settingweb->link_sosmed2 = $request->link_sosmed2;
+          $settingweb->link_sosmed3 = $request->link_sosmed3; 
+          $settingweb->save();
+         Session::flash('sukses','Setup Telah Diupdate');
+        return redirect('/settingweb/sosmed');
 
     }
 

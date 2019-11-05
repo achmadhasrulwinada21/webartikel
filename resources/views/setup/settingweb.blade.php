@@ -9,7 +9,7 @@
         <a href="{{ url('/settingweb/perusahaan') }}" class="nav-link active">Perusahaan</a>
       </li>
        <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/admin/judul') }}" class="nav-link active">Sosmed</a>
+        <a href="{{ url('/settingweb/sosmed') }}" class="nav-link active">Sosmed</a>
       </li>
 </ul>
 
@@ -44,6 +44,7 @@
             @foreach ($settingweb as $sw )
  <form action="/settingweb/update" method="post" class="form-horizontal" enctype="multipart/form-data">
   {{ csrf_field() }}
+   {{ method_field('PUT') }}
   <br>
             <input type="hidden" name="id" id="id" value="{{ $sw->id }}">
                 <div class="form-group" style="margin-left:12px;margin-right:12px;">
@@ -80,7 +81,7 @@
                      </div>
                     </div>
                      <div class="col-sm-offset-2 col-sm-10" style="margin-left:12px;margin-right:12px;">
-                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save changes
+                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create"><span class="fa fa-save">&nbspSave changes</span>
                      </button>
                     </div>
                 </form>
