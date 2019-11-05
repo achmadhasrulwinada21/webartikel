@@ -133,7 +133,7 @@
         @endforeach
         </ul></li>
    <?php } else { ?>
-          <li class="nav-item"><a href="{{ url('/'.$menu->link.'') }}" class="nav-link">&nbsp&nbsp&nbsp&nbsp<i class="{{ $menu->icon }}"></i><th>&nbsp{{ $menu->judul }}</th></a></li>
+          <li class="nav-item has-treeview"><a href="{{ url('/'.$menu->link.'') }}" class="nav-link"><i class="{{ $menu->icon }}"></i><th>&nbsp{{ $menu->judul }}</th></a></li>
   <?php } ?>                       
  @endforeach
 

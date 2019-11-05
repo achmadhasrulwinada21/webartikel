@@ -45,6 +45,11 @@ class SettingwebController extends Controller
          return view('setup.settingweb',['settingweb' => $settingweb]);
     }
 
+     public function perusahaan(){
+        $settingweb = Settingweb::all();
+         return view('setup.perusahaan',['settingweb' => $settingweb]);
+    }
+
      public function show(){
 		$settingweb = Settingweb::all();
         return view('layouts.index',['settingweb' => $settingweb]);
@@ -83,4 +88,29 @@ class SettingwebController extends Controller
         return redirect('/admin/settingweb');
 
     }
+
+    public function update2(Request $request)
+    {
+          $this->validate($request,[
+                'nm_perusahaan' => 'required',
+                'alamat' =>'required',
+                'no_telp' => 'required',
+                'fax' =>'required',
+                'copyright' => 'required',
+               ]);
+
+        $settingweb = Settingweb::find($request->id);
+
+          $settingweb->id = $request->id;
+          $settingweb->nm_perusahaan = $request->nm_perusahaan;
+          $settingweb->alamat = $request->alamat;
+          $settingweb->no_telp = $request->no_telp; 
+          $settingweb->fax = $request->fax;
+          $settingweb->copyright = $request->copyright; 
+          $settingweb->save();
+         Session::flash('sukses21','Setup Telah Diupdate');
+        return redirect('/settingweb/perusahaan');
+
+    }
+
 }

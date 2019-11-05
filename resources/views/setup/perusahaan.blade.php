@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css')}}">
  <ul class="nav nav-tabs">
   <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/admin/settingweb') }}" class="nav-link">Title</a>
+        <a href="{{ url('/admin/settingweb') }}" class="nav-link active">Title</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/settingweb/perusahaan') }}" class="nav-link active">Perusahaan</a>
+        <a href="{{ url('/settingweb/perusahaan') }}" class="nav-link">Perusahaan</a>
       </li>
        <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/admin/judul') }}" class="nav-link active">Sosmed</a>
@@ -31,52 +31,49 @@
     <!-- /.content-header -->
      @if(Auth::user()->jabatan == 'admin')
  <section class="content">
-      <div class="container">
-         @if ($message = Session::get('sukses'))
+     @if ($message = Session::get('sukses21'))
 				<div class="alert alert-success alert-block">
 					<button type="button" class="close" data-dismiss="alert">×</button> 
 					<strong>{{ $message }}</strong>
         </div>
         @endif
-    <div class="row">
+      <div class="container">
+        <div class="row">
         <div class="col-md-12">
             <div class="card">
             @foreach ($settingweb as $sw )
- <form action="/settingweb/update" method="post" class="form-horizontal" enctype="multipart/form-data">
+ <form action="/settingweb/update2" method="post" class="form-horizontal">
   {{ csrf_field() }}
   <br>
             <input type="hidden" name="id" id="id" value="{{ $sw->id }}">
-                <div class="form-group" style="margin-left:12px;margin-right:12px;">
-                        <label for="name" class="col-sm-4 control-label">Title Web</label>
+               
+            <div class="form-group" style="margin-left:12px;margin-right:12px;">
+                        <label for="name" class="col-sm-4 control-label">Perusahaan</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" value="{{ $sw->title }}" maxlength="50" required>
+                            <input type="text" class="form-control" id="nm_perusahaan" name="nm_perusahaan" placeholder="Enter perusahaan" value="{{ $sw->nm_perusahaan }}" maxlength="50" required>
                </div>
                     </div>
                     <div class="form-group" style="margin-left:12px;margin-right:12px;">
-                        <label for="name" class="col-sm-4 control-label">Nama Web</label>
+                        <label for="name" class="col-sm-4 control-label">Alamat</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nm_web" name="nm_web" placeholder="Enter nama web" value="{{ $sw->nm_web }}" maxlength="50" required>
+                      <textarea class="form-control" name="alamat" id="alamat" required>{{ $sw->alamat }}</textarea>
                      </div></div>
-                     <div class="form-group" style="margin-left:12px;margin-right:12px;">
-                        <label for="name" class="col-sm-4 control-label">Logo Web</label>
+                    <div class="form-group" style="margin-left:12px;margin-right:12px;">
+                        <label for="name" class="col-sm-4 control-label">No Telp</label>
                         <div class="col-sm-12">
-                          <div class="row">
-                             <div class="col s6">
-                               @foreach ($settingweb as $sw )
-                                 <img src="{{ URL::to("$sw->logo_web")}}" id="showgambar" style="max-width:200px;max-height:200px;float:left;" />
-                                 @endforeach
-                          </div>
-                        </div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile" name="logo_web" accept="image/*">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
-                              </div>
-                          </div>
-                          </div>
+                            <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Enter NO Telpon" value="{{ $sw->no_telp }}" maxlength="50" required>
+                     </div>
+                    </div>
                      <div class="form-group" style="margin-left:12px;margin-right:12px;">
-                        <label for="name" class="col-sm-4 control-label">Link Web</label>
+                        <label for="name" class="col-sm-4 control-label">Fax</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="link_web" name="link_web" placeholder="Enter link web" value="{{ $sw->link_web }}" maxlength="50" required>
+                            <input type="text" class="form-control" id="no_fax" name="no_fax" placeholder="Enter NO Fax" value="{{ $sw->fax }}" maxlength="50" required>
+                     </div>
+                    </div>
+                      <div class="form-group" style="margin-left:12px;margin-right:12px;">
+                        <label for="name" class="col-sm-4 control-label">Copyright</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="copyright" name="copyright" placeholder="Enter link web" value="{{ $sw->copyright }}" maxlength="50" required>
                      </div>
                     </div>
                      <div class="col-sm-offset-2 col-sm-10" style="margin-left:12px;margin-right:12px;">

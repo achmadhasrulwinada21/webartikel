@@ -34,7 +34,10 @@ class ArtikelController extends Controller
      */
 
      public function json(){
-        $v_artikel = V_artikel::all();
+        $v_artikel = DB::table('artikel') 
+                    ->select(DB::raw('artikel.id,artikel.judul,artikel.isi_artikel,artikel.foto,artikel.id_kategori,kategori.kategori,artikel.file_artikel,artikel.keyword'))
+                    ->Join('kategori','artikel.id_kategori', '=', 'kategori.id')
+                     ->get();
         return Datatables::of($v_artikel)
         ->addIndexColumn()
         ->make(true);
