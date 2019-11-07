@@ -42,7 +42,9 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
+      <?php 
+       use Illuminate\Support\Facades\DB; 
+       ?>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
@@ -112,7 +114,7 @@
               </p>
             </a>
           </li>
-           <?php use Illuminate\Support\Facades\DB; 
+           <?php 
            $menuutama = DB::table('tabel_menu')
            ->leftJoin('judul_menu', 'judul_menu.id', '=', 'tabel_menu.id_jdl')
            ->where('childjudul', '9')->get(); 

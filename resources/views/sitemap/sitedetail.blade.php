@@ -35,7 +35,7 @@
                 <div class="card-header bg-info">Sitemap Detail</div>
                 <div class="card-body">
     <div class="table-responsive">
-	<table  class="table table-striped table-hover table-list table-bordered" id="tb-datatables3">
+	<table  class="table table-striped table-hover table-list" id="tb-datatables3">
                   <thead>
                     <tr style="vertical-align:middle;text-align:center;font-weigth:bold">
                         <th>No</th>
@@ -88,9 +88,10 @@ $(document).ready(function(){
 
   $(function () {
       $('#tb-datatables3').dataTable({"lengthMenu": [[10, 25,  -1], [10,25, "All"]]} );       
-        $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
+      $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
     }); 
 
+   
    $('#save').click(function (e) {
         e.preventDefault();
         $(this).html('Sending..');
@@ -101,12 +102,13 @@ $(document).ready(function(){
           dataType: 'json',
           success: function (data) {
               $('#id_form').trigger("reset");
-                 setTimeout("location.reload(true);",0)
-                 },
+               window.location = window.location.href;
+              },
           error: function (data) {
               console.log('Error:', data);
               $('#save').html('Save Changes');
-          }    
+          }   
+         
       });
       
      });
@@ -120,15 +122,14 @@ $(document).ready(function(){
 
                 switch (json.code) {
                   case 200:
-                      setTimeout("location.reload(true);",0)
+                   window.location = window.location.href;
                     break;
                   default:
                     break;
                 }
 
             }
-           
-        });
+           });
           });
   });
  </script>

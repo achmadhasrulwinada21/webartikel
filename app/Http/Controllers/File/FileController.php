@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Sitemap;
+namespace App\Http\Controllers\File;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SitedetailController extends Controller
+class FileController extends Controller
 {
     //
 }

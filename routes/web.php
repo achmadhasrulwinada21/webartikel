@@ -32,6 +32,8 @@ Route::prefix('admin')->group(function () {
        Route::resource('/testimoni','Master\TestimoniController');
        Route::resource('/footerbrand','Master\FooterbrandController'); 
        Route::resource('/sitemap','Sitemap\SiteheaderController'); 
+       Route::resource('/navbar','Navbar\NavbarController'); 
+       Route::resource('/category','File\CategoryController');
    });
 
 Route::prefix('manajemenuser')->group(function () {
@@ -130,5 +132,28 @@ Route::prefix('sitemap')->group(function () {
       Route::get('/show/{id}','Sitemap\SiteheaderController@show'); 
       Route::post('/insert_detail','Sitemap\SiteheaderController@insert_detail');
       ROUTE::DELETE('/delete/{id}', 'Sitemap\SiteheaderController@delete');
+     });
+
+Route::prefix('navbar')->group(function () {
+      Route::get('/json','Navbar\NavbarController@json');
+      Route::post('/insert','Navbar\NavbarController@insert');
+      Route::put('/edit/{id}', 'Navbar\NavbarController@edit');
+      Route::put('/edit2/{id}', 'Navbar\NavbarController@edit2');
+      ROUTE::DELETE('/destroy/{id}', 'Navbar\NavbarController@destroy');
+      Route::get('/show/{id}','Navbar\NavbarController@show');
+      Route::get('/show2/{id}','Navbar\NavbarController@show2'); 
+      Route::post('/insert_detail','Navbar\NavbarController@insert_detail');
+      Route::post('/update_detail','Navbar\NavbarController@update_detail');
+      ROUTE::DELETE('/delete/{id}', 'Navbar\NavbarController@delete');
+      Route::post('/insert_detailsub2','Navbar\NavbarController@insert_detailsub2');
+      Route::post('/update_detailsub2','Navbar\NavbarController@update_detailsub2');
+      ROUTE::DELETE('/deletesub2/{id}', 'Navbar\NavbarController@deletesub2');
+     });
+
+     Route::prefix('category')->group(function () {
+      Route::get('/json','File\CategoryController@json'); 
+      Route::post('/store','File\CategoryController@store');
+      ROUTE::DELETE('/destroy/{id}', 'File\CategoryController@destroy');
+      Route::put('/edit/{id}', 'File\CategoryController@edit');
      });
 
