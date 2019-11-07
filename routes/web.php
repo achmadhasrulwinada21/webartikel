@@ -34,6 +34,7 @@ Route::prefix('admin')->group(function () {
        Route::resource('/sitemap','Sitemap\SiteheaderController'); 
        Route::resource('/navbar','Navbar\NavbarController'); 
        Route::resource('/category','File\CategoryController');
+       Route::resource('/file','File\FileController');
    });
 
 Route::prefix('manajemenuser')->group(function () {
@@ -155,5 +156,12 @@ Route::prefix('navbar')->group(function () {
       Route::post('/store','File\CategoryController@store');
       ROUTE::DELETE('/destroy/{id}', 'File\CategoryController@destroy');
       Route::put('/edit/{id}', 'File\CategoryController@edit');
+     });
+
+     Route::prefix('file')->group(function () {
+      Route::get('/json','File\FileController@json'); 
+      Route::post('/insert','File\FileController@insert');
+      Route::post('/update/{id}','File\FileController@update');
+      ROUTE::DELETE('/destroy/{id}', 'File\FileController@destroy');
      });
 
