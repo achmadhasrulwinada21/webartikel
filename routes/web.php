@@ -133,6 +133,7 @@ Route::prefix('sitemap')->group(function () {
       Route::get('/show/{id}','Sitemap\SiteheaderController@show'); 
       Route::post('/insert_detail','Sitemap\SiteheaderController@insert_detail');
       ROUTE::DELETE('/delete/{id}', 'Sitemap\SiteheaderController@delete');
+      Route::post('/update_detail','Sitemap\SiteheaderController@update_detail');
      });
 
 Route::prefix('navbar')->group(function () {

@@ -52,13 +52,49 @@
                        <td>{{ $no }}</td>
                       <td>{{ $dtl->judul_detail }}</td>
                       <td>{{ $dtl->link_detail }}</td>
-                      <td><a href="javascript:void(0)" data-toggle="tooltip" title="Delete" data-id="{{ $dtl->id }}" data-original-title="Delete" class="btn btn-danger btn-xs deleteProduct"><i class="fa fa-trash"></i>&nbspDelete</a></td>
+                      <td>
+                        <a href="javascript:void(0)" data-toggle="tooltip" title="Update" data-id="{{ $dtl->id }}" data-judul_detail="{{ $dtl->judul_detail }}" data-link_detail="{{ $dtl->link_detail }}"  data-original-title="Edit" class="edit btn btn-primary btn-xs editProduct"><i class="fa fa-edit"></i>&nbspEdit</a>
+                        <a href="javascript:void(0)" data-toggle="tooltip" title="Delete" data-id="{{ $dtl->id }}" data-original-title="Delete" class="btn btn-danger btn-xs deleteProduct"><i class="fa fa-trash"></i>&nbspDelete</a></td>
                      </tr>
                     @endforeach
                   </tbody>
                   
                 </table>
            </div></div></div></div>
+   <div class="modal fade" id="ajaxModel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h4 class="modal-title" id="modelHeading"></h4>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm" name="productForm" class="form-horizontal">
+                   <input type="hidden" name="id" id="id">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Judul</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="judul_detail" id="judul" placeholder="Enter judul"  maxlength="50" required>
+                     </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Link</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="link_detail" id="link" placeholder="Enter link"  maxlength="50" required>
+                     </div>
+                    </div>
+                   <br>
+                    <div class="col-sm-offset-2 col-sm-10">
+                     <button type="submit" class="btn btn-primary" id="saveBtn21" value="create">Save changes
+                     </button>
+                    </div>
+                </form>
+            </div><div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
 <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
    <script>
 $(document).ready(function(){
@@ -112,6 +148,40 @@ $(document).ready(function(){
       });
       
      });
+
+     $('body').on('click', '.editProduct', function () {
+      var id = $(this).data('id');
+      var judul = $(this).data('judul_detail');
+      var link = $(this).data('link_detail');
+          $('#modelHeading').html("Edit Data");
+          $('#saveBtn21').val("edit");
+          $('#ajaxModel').modal('show');
+          $('#id').val(id);
+          $('#judul').val(judul);
+          $('#link').val(link);
+        });
+
+         $('#saveBtn21').click(function (e) {
+        e.preventDefault();
+        $(this).html('Sending..');
+        $.ajax({
+          data: $('#productForm').serialize(),
+          url: "/sitemap/update_detail",
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+              $('#productForm').trigger("reset");
+               $('#ajaxModel').modal('hide');
+                 window.location = window.location.href;
+            },
+          error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtn21').html('Save Changes');
+          }    
+      });
+      
+     });
+
        $('body').on('click', '.deleteProduct', function () {
         var id = $(this).data("id");
         $.ajax({

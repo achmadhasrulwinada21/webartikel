@@ -120,5 +120,20 @@ for($count = 0; $count<count($judul_detail); $count++)
 
         return json_encode($callback, TRUE);
     }
+
+    public function update_detail(Request $request)
+
+     {
+        Sitedetail::updateOrCreate(['id' => $request->id],
+
+                [
+                    'judul_detail' => $request->judul_detail,
+                    'link_detail' => $request->link_detail,
+                ]
+                );        
+        
+        return response()->json(['success'=>'saved successfully.']);
+
+    }
     
 }

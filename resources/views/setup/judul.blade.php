@@ -73,7 +73,7 @@
         </div>
     </div>
  <div class="modal fade" id="ajaxModel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h4 class="modal-title" id="modelHeading"></h4>
@@ -85,9 +85,9 @@
                 <form id="productForm2" name="productForm2" class="form-horizontal">
                      {{ csrf_field() }}
          <input type="hidden" name="id" id="id">
-        <div class="form-group row">
-       <label class="col-md-4 col-form-label text-md-right">Judul</label><br>
-        <div class="col-md-6">
+        <div class="form-group">
+       <label class="col-md-4 col-form-label">Judul</label><br>
+        <div class="col-sm-12">
 		<input type="text" name="judul" id="judul" class="form-control" placeholder="isi judul...">
 		 @if($errors->has('judul'))
             <div class="text-danger">
@@ -95,12 +95,12 @@
            </div>
         @endif
     </div></div> 
-     <div class="form-group row">
-        <label class="col-md-4 col-form-label text-md-right">Link</label><br>
-        <div class="col-md-6">
+     <div class="form-group">
+        <label class="col-md-4 col-form-label">Link</label><br>
+        <div class="col-sm-12">
      <textarea name="keterangan" id="keterangan"  class="form-control" placeholder="isi keterangan..." required></textarea>
-         </div></div>    <br>
-                    <div class="col-sm-offset-2 col-sm-10" style="margin-left:67%">
+         </div></div>
+                    <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit" class="btn btn-primary" id="saveBtn2" value="create">Save changes
                      </button>
                     </div>
