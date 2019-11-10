@@ -18,6 +18,7 @@ class CreateArtikelTable extends Migration
             $table->string('judul');
             $table->text('isi_artikel');
             $table->string('foto');
+            $table->string('file_artikel');
             $table->unsignedBigInteger('id_kategori');
             $table->timestamps();
             $table->foreign('id_kategori')
