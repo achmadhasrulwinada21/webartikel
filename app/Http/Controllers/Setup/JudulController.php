@@ -41,7 +41,7 @@ class JudulController extends Controller
 
      public function index(){
          $judul = Judul::all();
-         $settingweb = Settingweb::all();
+          $settingweb = Settingweb::find('001');
         return view('setup.judul',['judul' => $judul,'settingweb' => $settingweb]);
     }
 

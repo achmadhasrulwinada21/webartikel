@@ -40,7 +40,7 @@ class KategoriController extends Controller
 
      public function index(){
         $kategori = Kategori::all();
-        $settingweb = Settingweb::all();
+         $settingweb = Settingweb::find('001');
     	return view('artikel.kategori',['kategori' => $kategori,'settingweb' => $settingweb]);
     }
 

@@ -47,13 +47,13 @@ class FooterbrandController extends Controller
 
      public function index(){
         $footerbrand = Footerbrand::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('master.footer_brand.footer_brand',['footerbrand' => $footerbrand,'settingweb' => $settingweb]);
     }
 
      public function tambah(){
         $footerbrand = Footerbrand::all();
-        $settingweb = Settingweb::all();
+       $settingweb = Settingweb::find('001');
     	return view('master.footer_brand.tambah_footerbrand',['footerbrand' => $footerbrand,'settingweb' => $settingweb]);
   }
 
@@ -89,7 +89,7 @@ class FooterbrandController extends Controller
 
     public function edit($id){
       $footerbrand = Footerbrand::find($id);
-      $settingweb = Settingweb::all();
+      $settingweb = Settingweb::find('001');
        return view('master.footer_brand.edit_footerbrand', ['footerbrand' => $footerbrand,'settingweb' => $settingweb]);
     }
 

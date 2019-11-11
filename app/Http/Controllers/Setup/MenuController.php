@@ -55,7 +55,7 @@ class MenuController extends Controller
            ->where('id', '<>', '9')
           ->orderBy('id', 'desc')
           ->get();
-         $settingweb = Settingweb::all();
+         $settingweb = Settingweb::find('001');
         return view('setup.menu',['menu' => $menu,'settingweb' => $settingweb,'judul' => $judul,'judul2' => $judul2]);
     }
 

@@ -46,13 +46,13 @@ class ServisController extends Controller
     }
      public function index(){
         $servis = Servis::all();
-        $settingweb = Settingweb::all();
+         $settingweb = Settingweb::find('001');
     	return view('master.servis.servis',['servis' => $servis,'settingweb' => $settingweb]);
     }
 
      public function tambah(){
         $servis = Servis::all();
-        $settingweb = Settingweb::all();
+         $settingweb = Settingweb::find('001');
     	return view('master.servis.tambah_servis',['servis' => $servis,'settingweb' => $settingweb]);
   }
   public function insert(Request $request) {
@@ -87,7 +87,7 @@ class ServisController extends Controller
 
      public function edit($id){
       $servis = Servis::find($id);
-      $settingweb = Settingweb::all();
+      $settingweb = Settingweb::find('001');
        return view('master.servis.edit_servis', ['servis' => $servis,'settingweb' => $settingweb]);
     }
 

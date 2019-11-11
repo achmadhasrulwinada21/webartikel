@@ -43,7 +43,7 @@ class SiteheaderController extends Controller
 
      public function index(){
          $siteheader = Siteheader::all();
-         $settingweb = Settingweb::all();
+         $settingweb = Settingweb::find('001');
         return view('sitemap.siteheader',['siteheader' => $siteheader,'settingweb' => $settingweb]);
     }
 
@@ -86,7 +86,7 @@ class SiteheaderController extends Controller
                      ->leftJoin('sitemap_detail', 'sitemap_header.id', '=', 'sitemap_detail.id_sitemap')
                      ->where('sitemap_detail.id_sitemap', '=', $id)
                      ->get();
-        $settingweb = Settingweb::all();
+       $settingweb = Settingweb::find('001');
        return view('sitemap.sitedetail', ['siteheader' => $siteheader,'sitedetail' => $sitedetail,'settingweb' => $settingweb]);
     }
 

@@ -50,7 +50,7 @@ class ManajemenuserController extends Controller
 
     public function index(){
        $manajemenuser = Manajemenuser::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('setup.manajemenuser',['manajemenuser' => $manajemenuser,'settingweb' => $settingweb]);
     }
 
