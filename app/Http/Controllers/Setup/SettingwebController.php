@@ -115,7 +115,7 @@ class SettingwebController extends Controller
           $settingweb->copyright = $request->copyright; 
           $settingweb->save();
          Session::flash('sukses21','Setup Telah Diupdate');
-        return redirect('/settingweb/perusahaan');
+        return redirect('/admin/settingweb');
 
     }
 
@@ -180,9 +180,12 @@ class SettingwebController extends Controller
           $settingweb->link_sosmed1 = $request->link_sosmed1;
           $settingweb->link_sosmed2 = $request->link_sosmed2;
           $settingweb->link_sosmed3 = $request->link_sosmed3; 
+          $settingweb->alt_teks_fb = $request->alt_teks_fb;
+          $settingweb->alt_teks_ig = $request->alt_teks_ig;
+          $settingweb->alt_teks_twit = $request->alt_teks_twit;
           $settingweb->save();
          Session::flash('sukses','Setup Telah Diupdate');
-        return redirect('/settingweb/sosmed');
+        return redirect('/admin/settingweb');
 
     }
 
