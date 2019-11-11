@@ -11,11 +11,11 @@
 |
 */
 
-Route::group(['prefix' => 'branchoffice'], function () {
-    Route::get('/', function () {
-        dd('This is the BranchOffice module index page. Build something great!');
-    });
-});
+// Route::group(['prefix' => 'branchoffice'], function () {
+//     Route::get('/', function () {
+//         dd('This is the BranchOffice module index page. Build something great!');
+//     });
+// });
 
 Route::group(['prefix' => config('app.app_prefix')], function () {
     Route::get('/branchoffice/list', 'BranchOfficeController@listAll');

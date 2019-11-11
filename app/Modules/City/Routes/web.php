@@ -11,8 +11,13 @@
 |
 */
 
-Route::group(['prefix' => 'city'], function () {
-    Route::get('/', function () {
-        dd('This is the City module index page. Build something great!');
-    });
+// Route::group(['prefix' => 'city'], function () {
+//     Route::get('/', function () {
+//         dd('This is the City module index page. Build something great!');
+//     });
+// });
+
+Route::group(['prefix' => config('app.app_prefix')], function () {
+    Route::get('/city/province/{province_id}', 'CityController@getByProvinceId');
+    //Route::resource('/branchoffice', 'BranchOfficeController');
 });

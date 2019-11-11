@@ -10,6 +10,7 @@ use App\Modules\BranchOffice\Models\BranchOffice;
 use App\Modules\Province\Models\Province;
 use App\Modules\City\Models\City;
 use App\Http\Controllers\Controller;
+use Session;
 
 class BranchOfficeController extends Controller
 {
@@ -19,14 +20,11 @@ class BranchOfficeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function listAll(){
-        $queryBranch = DB::table('branch_office')
-                        ->select(DB::raw('*'))
-                        ->Join('province', 'province.id', '=', 'branch_office.province_id')
-                        ->Join('city', 'city.id', '=', 'branch_office.city_id')
-                        ->get();
-        return DataTables::of($queryBranch)
-                ->addColumn('action', function ($queryBranch) {
-                    $html = '<a href="/'.config('app.app_prefix').'/branchoffice/'.$role->id.'/edit" class="btn btn-primary" >Edit</a> &nbsp <button id="" data-id="'. $role->id .'" class="btn btn-danger">Delete</button>';
+        $branch = BranchOffice::with('provinces', 'cities')->get();
+                        
+        return DataTables::of($branch)
+                ->addColumn('action', function ($branch) {
+                    $html = '<a href="/'.config('app.app_prefix').'/branchoffice/'.$branch->id.'/edit" class="btn btn-primary" >Edit</a> &nbsp <button id="btn-office" data-id="'. $branch->id .'" class="btn btn-danger">Delete</button>';
                     return $html;
             })
             ->addIndexColumn()
@@ -62,6 +60,31 @@ class BranchOfficeController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'province_id'          => 'required',
+            'city_id'   => 'required',
+            'address' => 'required',
+            'phone_number' => 'required',
+            'office_type' => 'required',
+            'fax' => 'required'
+        ]);
+
+        if($validatedData) {
+            $branch = new BranchOffice();
+            $branch->province_id = $request->province_id;
+            //dd($request->city_id);
+            $branch->city_id = $request->city_id;
+            $branch->address = $request->address;
+            $branch->phone_number = $request->phone_number;
+            $branch->office_type = $request->office_type;
+            $branch->fax = $request->fax;
+            $branch->head_office = $request->head_office;
+            $branch->save();
+            
+        }
+
+        Session::flash('sukses','Office has been inserted!');
+        return redirect(config('app.app_prefix') . '/branchoffice');
     }
 
     /**
@@ -73,6 +96,7 @@ class BranchOfficeController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -84,6 +108,12 @@ class BranchOfficeController extends Controller
     public function edit($id)
     {
         //
+        $branch = BranchOffice::with(['provinces.cities', 'cities'])->first();
+        //dd($branch->cities->city_name);
+        $provinces = Province::all();
+        $data['branch'] = $branch;
+        $data['provinces'] = $provinces;
+        return view('branchoffice::edit', $data);
     }
 
     /**
@@ -96,6 +126,31 @@ class BranchOfficeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validatedData = $request->validate([
+            'province_id'          => 'required',
+            'city_id'   => 'required',
+            'address' => 'required',
+            'phone_number' => 'required',
+            'office_type' => 'required',
+            'fax' => 'required'
+        ]);
+
+        if($validatedData) {
+            $branch = BranchOffice::find($id);
+            $branch->province_id = $request->province_id;
+            //dd($request->city_id);
+            $branch->city_id = $request->city_id;
+            $branch->address = $request->address;
+            $branch->phone_number = $request->phone_number;
+            $branch->office_type = $request->office_type;
+            $branch->fax = $request->fax;
+            $branch->head_office = $request->head_office;
+            $branch->save();
+            
+        }
+
+        Session::flash('sukses','Office has been inserted!');
+        return redirect(config('app.app_prefix') . '/branchoffice');
     }
 
     /**
@@ -107,5 +162,13 @@ class BranchOfficeController extends Controller
     public function destroy($id)
     {
         //
+        $branch = BranchOffice::destroy($id);
+
+        $data = [
+            "status" => 200,
+            "message" => "Successfully Delete Office"
+        ];
+
+        return json_encode($data);
     }
 }

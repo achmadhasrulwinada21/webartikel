@@ -41,7 +41,6 @@ $prefix = config('app.app_prefix');
                         <tr style="vertical-align:middle;text-align:center;font-weigth:bold">
                             <th>No</th>
                             <th>Type</th>
-                            <th>Head Office</th>
                             <th>Address</th>
                             <th>City</th>
                             <th>Province</th>
@@ -71,12 +70,23 @@ $prefix = config('app.app_prefix');
           serverSide: true,
           ajax: '/{{ $prefix }}/branchoffice/list',
           columns: [
-              { data: 'id', name:'id'},
-              { data: 'office_type', name: 'office_type' },
-              { data: 'head_office', name: 'head_office' },
+              { data: 'id', 
+                render: function(data, type, row, meta){
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                },
+              name:'id'},
+              { data: 'office_type', 
+              render: function(data, type, row, meta){
+                if(data == "head-office"){
+                    return "Head Office";
+                }else{
+                    return "Branch Office";
+                }
+              },
+              name: 'office_type' },
               { data: 'address', name: 'address' },
-              { data: 'city_name', name: 'city_name' },
-              { data: 'province_name', name: 'province_name' },
+              { data: 'cities.city_name', name: 'city_name' },
+              { data: 'provinces.province_name', name: 'province_name' },
               { 
                 data: 'action', 
                 name: 'action', 
@@ -86,7 +96,7 @@ $prefix = config('app.app_prefix');
             ]
       });
     
-    $(document).on('click', '#deleteRole', function () {
+    $(document).on('click', '#btn-office', function () {
       var id = $(this).data("id");
 
       Swal.fire({
@@ -101,7 +111,7 @@ $prefix = config('app.app_prefix');
         if (result.value) {
             $.ajax({
             type: "DELETE",
-            url: "/{{ $prefix }}/role/" + id,
+            url: "/{{ $prefix }}/branchoffice/" + id,
             success: function(data){
               var json  = JSON.parse(data)
               switch (json.status) {
