@@ -8,8 +8,8 @@ $PREFIX = config('app.app_prefix');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <title>Adira Admin | Dashboard </title>
+               
+       <title>{{ $settingweb->title }} | Dashboard </title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,11 +83,11 @@ $PREFIX = config('app.app_prefix');
     <!-- Brand Logo -->
    
     <a href="{{ url('/home') }}" class="brand-link">
-      {{-- <img src="{{ asset(''.$sw->logo_web.'')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8"> --}}
-      {{-- <span class="brand-text font-weight-light">{{ $sw->nm_web }}</span> --}}
+      <img src="{{ asset(''.$settingweb->logo_web.'')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+      <span class="brand-text font-weight-light">{{ $settingweb->nm_web }}</span>
     </a>
-    
+           
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->

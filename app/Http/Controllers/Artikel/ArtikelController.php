@@ -198,9 +198,10 @@ class ArtikelController extends Controller
     }
 
      public function create_article($id){
+        $settingweb = Settingweb::find('001');
         $artikel = Artikel::find($id);
         $kategori = Kategori::all();
-       return view('artikel.create_en_article',['kategori' => $kategori,'artikel' =>$artikel]);
+       return view('artikel.create_en_article',['kategori' => $kategori,'artikel' =>$artikel,'settingweb'=>$settingweb]);
   }
 
 }

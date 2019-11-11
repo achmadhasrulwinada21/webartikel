@@ -191,10 +191,8 @@
                   'orderable':false,
                   'render': function (data, type, full, meta)
                      {
-                       @foreach($settingweb as $s)
-                  return '<center><a href="{{ $s->link_web}}/'+data+'" target="blank"><img src="{{ URL::to("/assets/files.png")}}" style="height:50px;width:50px;"/></a></center>';
-                  @endforeach
-                     }
+                    return '<center><a href="{{ $settingweb->link_web}}/'+data+'" target="blank"><img src="{{ URL::to("/assets/files.png")}}" style="height:50px;width:50px;"/></a></center>';
+                       }
                    },               
                   { data: 'ket', name: 'ket' },
                   { data: 'kategori', name: 'kategori' },

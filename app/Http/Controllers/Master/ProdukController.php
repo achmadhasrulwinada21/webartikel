@@ -46,12 +46,12 @@ class ProdukController extends Controller
     }
      public function index(){
         $produk = Produk::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('master.produk.produk',['produk' => $produk,'settingweb' => $settingweb]);
     }
     public function tambah(){
         $produk = Produk::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('master.produk.tambah_produk',['produk' => $produk,'settingweb' => $settingweb]);
   }
   public function insert(Request $request) {
@@ -86,7 +86,7 @@ class ProdukController extends Controller
 
      public function edit($id){
       $produk = Produk::find($id);
-      $settingweb = Settingweb::all();
+      $settingweb = Settingweb::find('001');
        return view('master.produk.edit_produk', ['produk' => $produk,'settingweb' => $settingweb]);
     }
 

@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
      public function index(){
         $kategori = Category::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('file.category',['kategori' => $kategori,'settingweb' => $settingweb]);
     }
 

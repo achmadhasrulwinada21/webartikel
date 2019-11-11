@@ -44,7 +44,7 @@ class NavbarController extends Controller
 
      public function index(){
          $navbarheader = Navbarheader::all();
-         $settingweb = Settingweb::all();
+          $settingweb = Settingweb::find('001');
         return view('navbar.navbar_header',['navbarheader' => $navbarheader,'settingweb' => $settingweb]);
     }
 public function edit($id)
@@ -86,7 +86,7 @@ public function edit($id)
                      ->leftJoin('navbar_submenu', 'navbar_header.id', '=', 'navbar_submenu.id_navbar')
                      ->where('navbar_submenu.id_navbar', '=', $id)
                      ->get();
-        $settingweb = Settingweb::all();
+       $settingweb = Settingweb::find('001');
        return view('navbar.navbar_sub', ['navbarheader' => $navbarheader,'navbarsub' => $navbarsub,'settingweb' => $settingweb]);
     }
 
@@ -149,7 +149,7 @@ for($count = 0; $count<count($judul_sub); $count++)
                      ->leftJoin('navbar_submenu2', 'navbar_submenu.id', '=', 'navbar_submenu2.id_sub')
                      ->where('navbar_submenu2.id_sub', '=', $id)
                      ->get();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
        return view('navbar.navbar_sub2', ['navbarsub' => $navbarsub,'navbarsub2' => $navbarsub2,'settingweb' => $settingweb]);
     }
 

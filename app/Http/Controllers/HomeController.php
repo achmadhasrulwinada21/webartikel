@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $settingweb = Settingweb::where("kode","001");
+         $settingweb = Settingweb::find('001');
         return view('admin/adminlte',['settingweb' => $settingweb]);
     }
 }

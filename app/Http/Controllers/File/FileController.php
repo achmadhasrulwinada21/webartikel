@@ -46,7 +46,7 @@ class FileController extends Controller
      public function index(){
         $file = File2::all();
         $kategori = Category::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('file.file',['file' => $file,'kategori' => $kategori,'settingweb' => $settingweb]);
     }
 

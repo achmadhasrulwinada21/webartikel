@@ -47,13 +47,13 @@ class BannerController extends Controller
 
      public function index(){
         $banner = Banner::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('master.banner.banner',['banner' => $banner,'settingweb' => $settingweb]);
     }
 
     public function tambah(){
         $banner = Banner::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('master.banner.tambah_banner',['banner' => $banner,'settingweb' => $settingweb]);
   }
 
@@ -85,7 +85,7 @@ class BannerController extends Controller
 
      public function edit($id){
       $banner = Banner::find($id);
-      $settingweb = Settingweb::all();
+      $settingweb = Settingweb::find('001');
        return view('master.banner.edit_banner', ['banner' => $banner,'settingweb' => $settingweb]);
     }
 

@@ -46,13 +46,13 @@ class TestimoniController extends Controller
     }
      public function index(){
         $testimoni = Testimoni::all();
-        $settingweb = Settingweb::all();
+         $settingweb = Settingweb::find('001');
     	return view('master.testimoni.testimoni',['testimoni' => $testimoni,'settingweb' => $settingweb]);
     }
 
      public function tambah(){
         $testimoni = Testimoni::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('master.testimoni.tambah_testimoni',['testimoni' => $testimoni,'settingweb' => $settingweb]);
   }
   public function insert(Request $request) {
@@ -85,7 +85,7 @@ class TestimoniController extends Controller
 
     public function edit($id){
       $testimoni = Testimoni::find($id);
-      $settingweb = Settingweb::all();
+      $settingweb = Settingweb::find('001');
        return view('master.testimoni.edit_testimoni', ['testimoni' => $testimoni,'settingweb' => $settingweb]);
     }
 
