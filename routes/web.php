@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-      return "test";
+      return Redirect::to('http://stgadira.bandingin.com/login');
 });
 
 Auth::routes();
