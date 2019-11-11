@@ -104,7 +104,7 @@
     "select2": "^4.0.10",
     "sparklines": "^1.2.0",
     "summernote": "^0.8.12",
-    "sweetalert2": "^8.17.6",
+    "sweetalert2": "^8.19.0",
     "tempusdominus-bootstrap-4": "^5.1.2",
     "toastr": "^2.1.4"
   },
