@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Manajemen Banner</h1>
+            <h1 class="m-0 text-dark">Management Banner</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -38,16 +38,15 @@
                 <div class="card-header bg-info">Data Banner</div>
 
                 <div class="card-body">
-                   <a class="btn btn-success btn-sm" href="/banner/tambah"><i class="fa fa-plus">&nbsp Tambah Banner</i></a><br><br>
+                   <a class="btn btn-success btn-sm" href="/banner/tambah"><i class="fa fa-plus">&nbsp Create Banner</i></a><br><br>
   <div class="table-responsive">
 	<table  class="table-hover table-striped table-bordered table-list tabelbaner">
                   <thead>
                     <tr style="vertical-align:middle;text-align:center;font-weigth:bold">
                         <th>No</th>
-                        <th>Nama</th>
                         <th>Link</th>
                         <th>Status</th>
-                        <th>Aksi</th>
+                        <th>Action</th>
                       </tr> 
                   </thead>
                   <tbody><tbody>
@@ -73,7 +72,6 @@
               ajax: '/banner/json',
               columns: [
                   { data: 'DT_RowIndex', name:'DT_RowIndex'},
-                  { data: 'nama', name: 'nama' },
                   { data: 'link', name: 'link' },
                   {data: 'action', name: 'status', orderable: false, searchable: false},
                    { data: 'id', 

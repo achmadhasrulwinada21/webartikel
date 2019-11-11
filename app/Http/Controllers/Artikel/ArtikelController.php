@@ -35,7 +35,7 @@ class ArtikelController extends Controller
 
      public function json(){
         $v_artikel = DB::table('artikel') 
-                    ->select(DB::raw('artikel.id,artikel.judul,artikel.isi_artikel,artikel.foto,artikel.id_kategori,kategori.kategori,artikel.file_artikel,artikel.keyword'))
+                    ->select(DB::raw('artikel.id,artikel.judul,artikel.isi_artikel,artikel.foto,artikel.id_kategori,kategori.kategori,artikel.file_artikel,artikel.keyword,artikel.language,artikel.artikel_parent,artikel.alt_teks'))
                     ->Join('kategori','artikel.id_kategori', '=', 'kategori.id')
                      ->get();
         return Datatables::of($v_artikel)
@@ -45,17 +45,17 @@ class ArtikelController extends Controller
 
      public function index(){
         $artikel = Artikel::all();
-         $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
         return view('artikel.artikel',['artikel' => $artikel,'settingweb' => $settingweb]);
     }
 
      public function tambah(){
         $kategori = Kategori::all();
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
     	return view('artikel.tambah_artikel',['kategori' => $kategori,'settingweb' => $settingweb]);
   }
 
-  public function insert(Request $request) {
+    public function insert(Request $request) {
                
     	$this->validate($request,[
             'judul' =>'required',
@@ -68,21 +68,21 @@ class ArtikelController extends Controller
 
 //join tb_kategori n tb_artikel
 
- $kategori = DB::table('kategori')
-             ->where('id', '=', $request->id_kategori)
-             ->get(); 
+//  $kategori = DB::table('kategori')
+//              ->where('id', '=', $request->id_kategori)
+//              ->get(); 
           
-          foreach($kategori as $k){
-              $id_kat = $k->id;
-           }
- $menuutama = DB::table('artikel')
-             ->leftJoin('kategori','artikel.id_kategori', '=', 'kategori.id')
-             ->where('artikel.id_kategori', '=',  $id_kat)
-             ->get(); 
+//           foreach($kategori as $k){
+//               $id_kat = $k->id;
+//            }
+//  $menuutama = DB::table('artikel')
+//              ->leftJoin('kategori','artikel.id_kategori', '=', 'kategori.id')
+//              ->where('artikel.id_kategori', '=',  $id_kat)
+//              ->get(); 
 
-             foreach ($menuutama as $item){
-                   $request->kat = $item->kategori;
-              }
+//              foreach ($menuutama as $item){
+//                    $request->kat = $item->kategori;
+//               }
   //end join tb_kategori n tb_artikel 
 
          // menyimpan data file yang diupload ke variabel $file
@@ -115,17 +115,19 @@ class ArtikelController extends Controller
             'file_artikel' => $nama_file2,
             'id_kategori' => $request->id_kategori,
             'keyword' => $request->keyword,
+            'language' =>$request->language,
+            'artikel_parent'=>$request->artikel_parent
 		]);
           Session::flash('sukses','Artikel Telah Ditambahkan');
 
-          Mail::to("testing@mail.com")->send(new AchmadEmail($request));
+        //   Mail::to("testing@mail.com")->send(new AchmadEmail($request));
 
     	return redirect('/admin/artikel');
     }
 
       public function edit($id){
       $artikel = Artikel::find($id);
-      $settingweb = Settingweb::all();
+     $settingweb = Settingweb::find('001');
       $kategori = Kategori::all();
      return view('artikel.edit_artikel', ['artikel' => $artikel,'kategori' => $kategori,'settingweb' => $settingweb]);
     }
@@ -194,5 +196,11 @@ class ArtikelController extends Controller
 
         return json_encode($callback, TRUE);
     }
+
+     public function create_article($id){
+        $artikel = Artikel::find($id);
+        $kategori = Kategori::all();
+       return view('artikel.create_en_article',['kategori' => $kategori,'artikel' =>$artikel]);
+  }
 
 }

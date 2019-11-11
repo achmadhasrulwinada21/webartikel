@@ -60,8 +60,6 @@ class BannerController extends Controller
   public function insert(Request $request) {
                
     	$this->validate($request,[
-            'nama' =>'required',
-            'ket' =>'required',
             'foto' =>'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'status' => 'required',
             'link' => 'required',
@@ -76,8 +74,6 @@ class BannerController extends Controller
         $file->move($tujuan_upload,$nama_file);
                 
         Banner::create([
-            'nama' => $request->nama,
-            'ket' => $request->ket,
             'foto' => $nama_file,
             'status' => $request->status,
             'link' => $request->link,
@@ -95,9 +91,7 @@ class BannerController extends Controller
 
      public function update($id, Request $request){
     $this->validate($request,[
-	    'nama' =>'required',
-        'ket' =>'required',
-        'foto' =>'file|image|mimes:jpeg,png,jpg|max:2048',
+	    'foto' =>'file|image|mimes:jpeg,png,jpg|max:2048',
         'link' => 'required',
         'status' => 'required',
     ]);
@@ -119,9 +113,7 @@ class BannerController extends Controller
         }
    
     
-	$banner->nama = $request->nama;
-	$banner->ket = $request->ket;
-    $banner->link = $request->link;
+	$banner->link = $request->link;
     $banner->status = $request->status;
     $banner->save();
     Session::flash('sukses21','Banner Telah Diupdate');

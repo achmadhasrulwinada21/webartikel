@@ -64,6 +64,7 @@ Route::prefix('artikel')->group(function () {
       Route::get('/edit/{id}','Artikel\ArtikelController@edit');
       Route::put('/update/{id}', 'Artikel\ArtikelController@update');
       ROUTE::DELETE('/hapus/{id}', 'Artikel\ArtikelController@delete');
+      Route::get('/create_article/en/{id}','Artikel\ArtikelController@create_article');
       });
 
 Route::prefix('settingweb')->group(function () {

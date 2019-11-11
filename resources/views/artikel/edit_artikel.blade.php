@@ -48,10 +48,8 @@
                         <label>Upload Gambar</label> 
                           <div class="row">
                              <div class="col s6">
-                               @foreach ($settingweb as $sw )
-                                 <img src="{{ URL::to("$artikel->foto")}}" id="showgambar" style="max-width:200px;max-height:200px;float:left;" />
-                                 @endforeach
-                          </div>
+                              <img src="{{ URL::to("$artikel->foto")}}" id="showgambar" style="max-width:200px;max-height:200px;float:left;" />
+                         </div>
                         </div>
                         <br>
                     <div class="row">
@@ -70,9 +68,7 @@
                                 @if($artikel->file_artikel ==' ')
                                    <b>no file<b>
                                 @else
-                                @foreach ($settingweb as $s )
                                 <a href="{{ URL::to("$artikel->file_artikel")}}" target="blank"><img src="{{ URL::to("/assets/pdf.png")}}" id="showgambar2" style="max-width:200px;max-height:200px;float:left;" /></a>
-                                 @endforeach
                                 @endif
                           </div>
                         </div>

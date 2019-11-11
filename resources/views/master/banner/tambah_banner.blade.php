@@ -2,35 +2,14 @@
 @section('content')
 <br><br>
 <div class="container">
-  <div class="card-header bg-info">Tambah Artikel</div>
-    <div class="row">
-        <div class="col-md-8">
+   <div class="row">
+        <div class="col-md-12">
+            <div class="card-header bg-info">Create Banner</div>
             <div class="card">
                  <div class="card-body">
 	<form action="/banner/insert" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
-		<label>Nama</label><br>
-		<input type="text" name="nama" class="form-control" placeholder="isi Nama...">
-		 @if($errors->has('nama'))
-            <div class="text-danger">
-             {{ $errors->first('nama')}}
-           </div>
-        @endif
-		<br/>
-        <label>Keterangan</label> <br>
-		<textarea name="ket" class="form-control" id="content"></textarea>
-		 @if($errors->has('ket'))
-            <div class="text-danger">
-             {{ $errors->first('ket')}}
-           </div>
-        @endif
-</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                  <div class="card-body">
-                    <br/>
+		  <br/>
         <label>Upload Gambar</label><br>
    <div class="custom-file">
     <input type="file" class="custom-file-input" id="customFile" name="foto" accept="image/*">
