@@ -14,7 +14,7 @@ class Add2SettingwebTable extends Migration
     public function up()
     {
          Schema::table('settingweb', function($table) {
-            $table->string('kode')->after('no_telp')->nullable();
+            $table->string('kode')->nullable();
            });
     }
 

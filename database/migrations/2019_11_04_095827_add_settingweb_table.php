@@ -14,17 +14,17 @@ class AddSettingwebTable extends Migration
     public function up()
     {
          Schema::table('settingweb', function($table) {
-            $table->string('nm_perusahaan')->after('logo_web')->nullable();
-            $table->text('alamat')->after('nm_perusahaan')->nullable();
-            $table->string('no_telp')->after('alamat')->nullable();
-            $table->string('fax')->after('alamat')->nullable();
-            $table->string('logo_sosmed1')->after('fax')->nullable();
-            $table->string('link_sosmed1')->after('logo_sosmed1')->nullable();
-            $table->string('logo_sosmed2')->after('link_sosmed1')->nullable();
-            $table->string('link_sosmed2')->after('logo_sosmed2')->nullable();
-            $table->string('logo_sosmed3')->after('link_sosmed2')->nullable();
-            $table->string('link_sosmed3')->after('logo_sosmed3')->nullable();
-            $table->string('copyright')->after('link_sosmed3')->nullable();
+            $table->string('nm_perusahaan')->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('no_telp')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('logo_sosmed1')->nullable();
+            $table->string('link_sosmed1')->nullable();
+            $table->string('logo_sosmed2')->nullable();
+            $table->string('link_sosmed2')->nullable();
+            $table->string('logo_sosmed3')->nullable();
+            $table->string('link_sosmed3')->nullable();
+            $table->string('copyright')->nullable();
            });
     }
 

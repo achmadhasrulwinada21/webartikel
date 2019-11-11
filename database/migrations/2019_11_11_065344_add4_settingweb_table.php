@@ -14,9 +14,9 @@ class Add4SettingwebTable extends Migration
     public function up()
     {
          Schema::table('settingweb', function($table) {
-            $table->string('alt_teks_fb')->after('alt_teks')->nullable();
-            $table->string('alt_teks_ig')->after('alt_teks_fb')->nullable();
-            $table->string('alt_teks_twit')->after('alt_teks_ig')->nullable();
+            $table->string('alt_teks_fb')->nullable();
+            $table->string('alt_teks_ig')->nullable();
+            $table->string('alt_teks_twit')->nullable();
            });
     }
 

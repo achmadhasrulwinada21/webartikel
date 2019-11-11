@@ -14,7 +14,7 @@ class Add3SettingwebTable extends Migration
     public function up()
     {
          Schema::table('settingweb', function($table) {
-            $table->string('alt_teks')->after('kode')->nullable();
+            $table->string('alt_teks')->nullable();
            });
     }
 
