@@ -31,6 +31,6 @@ class CreateFooterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('footer');
+        Schema::dropIfExists('footer_brand');
     }
 }
