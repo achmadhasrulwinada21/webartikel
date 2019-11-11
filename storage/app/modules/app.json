@@ -1,0 +1,72 @@
+{
+    "Award": {
+        "basename": "Award",
+        "name": "Award",
+        "slug": "award",
+        "version": "1.0",
+        "description": "for award",
+        "id": 2321231591,
+        "enabled": true,
+        "order": 9001
+    },
+    "Branchoffice": {
+        "basename": "Branchoffice",
+        "name": "BranchOffice",
+        "slug": "branchoffice",
+        "version": "1.0",
+        "description": "This is the description for the Branchoffice module.",
+        "id": 2430109129,
+        "enabled": true,
+        "order": 9001
+    },
+    "City": {
+        "basename": "City",
+        "name": "City",
+        "slug": "city",
+        "version": "1.0",
+        "description": "This is the description for the City module.",
+        "id": 760939060,
+        "enabled": true,
+        "order": 9001
+    },
+    "Permission": {
+        "basename": "Permission",
+        "name": "Permission",
+        "slug": "permission",
+        "version": "1.0",
+        "description": "for permission management",
+        "id": 3762918058,
+        "enabled": true,
+        "order": 9001
+    },
+    "Province": {
+        "basename": "Province",
+        "name": "Province",
+        "slug": "province",
+        "version": "1.0",
+        "description": "This is the description for the Province module.",
+        "id": 1255855115,
+        "enabled": true,
+        "order": 9001
+    },
+    "Role": {
+        "basename": "Role",
+        "name": "Role",
+        "slug": "role",
+        "version": "1.0",
+        "description": "for role management",
+        "id": 1466534506,
+        "enabled": true,
+        "order": 9001
+    },
+    "Workshop": {
+        "basename": "Workshop",
+        "name": "Workshop",
+        "slug": "workshop",
+        "version": "1.0",
+        "description": "description workshop",
+        "id": 2607743684,
+        "enabled": true,
+        "order": 9001
+    }
+}

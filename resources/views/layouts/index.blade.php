@@ -158,6 +158,9 @@ $PREFIX = config('app.app_prefix');
         <li class="nav-item">
           <a href="{{ url('/admin/settingweb') }}" class="nav-link {{ Request::is('admin/settingweb') ? 'active' : '' }}"><i class="nav-icon fas fa-cog"></i><p>Setting</p></a>
         </li>
+        <li class="nav-item">
+          <a href="/{{ $PREFIX }}/branchoffice" class="nav-link {{ Request::is([$PREFIX . '/branchoffice', $PREFIX . '/branchoffice/create']) ? 'active' : '' }}"><i class="nav-icon fas fa-building"></i><p>Branch Office</p></a>
+        </li>
         </ul>
 
 
