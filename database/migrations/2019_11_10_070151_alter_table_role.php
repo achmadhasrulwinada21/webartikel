@@ -14,7 +14,7 @@ class AlterTableRole extends Migration
     public function up()
     {
         Schema::table('roles', function (Blueprint $table) {
-            $table->string("slug")->nullable()->after("web");
+            $table->string("slug")->nullable()->after("guard_name");
             $table->text('description')->nullable()->after("slug");
         });
     }
