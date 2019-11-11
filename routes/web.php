@@ -20,8 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
+      
+
        Route::resource('/artikel','Artikel\ArtikelController');
-       Route::resource('kategori','Artikel\KategoriController');
+       Route::resource('/kategori','Artikel\KategoriController');
+       Route::resource('/file','File\FileController');
        Route::resource('/manajemenuser','Setup\ManajemenuserController'); 
        Route::resource('/settingweb','Setup\SettingwebController'); 
        Route::resource('/menu','Setup\MenuController');  
@@ -35,6 +38,7 @@ Route::prefix('admin')->group(function () {
        Route::resource('/navbar','Navbar\NavbarController'); 
        Route::resource('/category','File\CategoryController');
        Route::resource('/file','File\FileController');
+       
    });
 
 Route::prefix('manajemenuser')->group(function () {

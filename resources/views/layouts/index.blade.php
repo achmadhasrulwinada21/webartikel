@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  @foreach ($settingweb as $s ) 
-  <title>{{ $s->title }} | Dashboard </title>
-  @endforeach
+  <title>Adira Admin | Dashboard </title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -53,9 +52,6 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/home') }}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
        <a class="nav-link" href="{{ route('logout') }}"
           onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -68,13 +64,13 @@
       </li>
     </ul>
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <!-- <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
           <i class="fas fa-th-large"></i>
         </a>
       </li> 
-    </ul>
+    </ul> -->
   </nav>
   <!-- /.navbar -->
 
@@ -97,23 +93,63 @@
           {{-- <img src="{{ asset('assets/dist/img/AdminLTELogo.png')}}" class="img-circle elevation-2" alt="User Image"> --}}
         </div>
         <div class="info">
-          <a href="{{ url('/home') }}" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{ url('/home') }}" class="d-block">Login as {{ Auth::user()->name }}</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview menu-open">
-            <a href="{{ url('/home') }}" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
+        <li class="nav-item has-treeview">
+          <a href="{{ url('/home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p> </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/roles') }}" class="nav-link {{ Request::is('admin/roles') ? 'active' : '' }}"><i class="nav-icon fas fa-user-circle"></i><p>Roles</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/manajemenuser') }}" class="nav-link {{ Request::is('admin/manajemenuser') ? 'active' : '' }}"><i class="nav-icon fas fa-user-circle"></i><p>User</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/artikel') }}" class="nav-link {{ Request::is('admin/artikel') ? 'active' : '' }}"> <i class="nav-icon fas fa-newspaper"></i> <p>Article </p> </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/kategori') }}" class="nav-link {{ Request::is('admin/kategori') ? 'active' : '' }}"> <i class="nav-icon fas fa-th-large"></i> <p>Category </p> </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/menu') }}" class="nav-link {{ Request::is('admin/menu') ? 'active' : '' }}"> <i class="nav-icon fas fa-list-alt"></i> <p>Menu </p> </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/servis') }}" class="nav-link {{ Request::is('admin/servis') ? 'active' : '' }}"> <i class="nav-icon fas fa-binoculars"></i> <p>Service </p> </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/banner') }}" class="nav-link {{ Request::is('admin/banner') ? 'active' : '' }}"> <i class="nav-icon fas fa-file-image"></i><p>Banner</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/produk') }}" class="nav-link {{ Request::is('admin/produk') ? 'active' : '' }}"> <i class="nav-icon fas fa-building"></i><p>Produk</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/testimoni') }}" class="nav-link {{ Request::is('admin/testimoni') ? 'active' : '' }}"> <i class="nav-icon fas fa-star"></i><p>Testimony</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/footerbrand') }}" class="nav-link {{ Request::is('admin/footerbrand') ? 'active' : '' }}"> <i class="nav-icon fas fa-mouse-pointer"></i><p>Footer Brand</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/sitemap') }}" class="nav-link {{ Request::is('admin/sitemap') ? 'active' : '' }}"> <i class="nav-icon fas fa-sitemap"></i><p>Sitemap</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/navbar') }}" class="nav-link {{ Request::is('admin/navbar') ? 'active' : '' }}"> <i class="nav-icon fas fa-object-ungroup"></i><p>Navbar</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/category') }}" class="nav-link {{ Request::is('admin/category') ? 'active' : '' }}"> <i class="nav-icon fas fa-location-arrow"></i><p>Category</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/file') }}" class="nav-link {{ Request::is('admin/file') ? 'active' : '' }}"> <i class="nav-icon fas fa-laptop"></i><p>File</p></a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/admin/settingweb') }}" class="nav-link {{ Request::is('admin/settingweb') ? 'active' : '' }}"><i class="nav-icon fas fa-cog"></i><p>Setting</p></a>
+        </li>
+
+
            <?php 
            $menuutama = DB::table('tabel_menu')
            ->leftJoin('judul_menu', 'judul_menu.id', '=', 'tabel_menu.id_jdl')
@@ -140,24 +176,8 @@
  @endforeach
 
 
-         {{-- @if(Auth::user()->jabatan == 'admin')
-          <li class="nav-item">
-            <a href="{{ url('/admin/manajemenuser') }}" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Manajemen User
-            </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="{{ url('/admin/settingweb') }}" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Setting
-            </p>
-            </a>
-          </li>
-        @endif --}}
+
+          
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -222,8 +242,6 @@
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('assets/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/dist/js/demo.js')}}"></script>
 <script>

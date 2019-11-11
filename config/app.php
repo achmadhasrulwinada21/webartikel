@@ -167,7 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,5 +230,10 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
+
+    /**
+     * Custom Config
+     */
+    'app_prefix' => env('APP_PREFIX'),
 
 ];

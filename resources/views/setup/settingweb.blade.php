@@ -29,7 +29,6 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-     @if(Auth::user()->jabatan == 'admin')
  <section class="content">
       <div class="container">
          @if ($message = Session::get('sukses'))
@@ -94,17 +93,6 @@
 </div>
 
  </section>
-  @else 
-    <section class="content">
-      <script>
-      Swal.fire({
-                                type: 'error',
-                                title: 'Maaf...',
-                                text: 'Anda Bukan Admin..',
-                            })
-      </script>
-    </section>
-    @endif
    <!-- /.content -->
    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 
