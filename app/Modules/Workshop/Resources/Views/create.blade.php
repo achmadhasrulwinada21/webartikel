@@ -13,7 +13,7 @@ $PREFIX = config('app.app_prefix');
         <div class="card">
           <div class="card-header bg-info">Create Workshop</div>
           <div class="card-body">
-            <form action="/{{ $PREFIX }}/role" method="post">
+            <form action="/{{ $PREFIX }}/workshop" method="post">
 		          {{ csrf_field() }}
               <div class="form-group">
                 <label>Name</label><br>
@@ -77,21 +77,6 @@ $PREFIX = config('app.app_prefix');
           </div>
         </div>
       </div>
-        {{-- <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-                <div class="form-group">
-                    <label for=""></label>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="/{{ $PREFIX }}/role" class="btn btn-secondary">Back</a>
-                </div>
-                
-                </form>
-                </div>
-            </div>
-        </div> --}}
     </div>
   </div>
 <script src="/assets/plugins/icheck-bootstrap/icheck.js"></script>
