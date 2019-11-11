@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-      Redirect::away('http://stgadira.bandingin.com/management');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
