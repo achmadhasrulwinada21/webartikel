@@ -41,16 +41,16 @@
                 <div class="card-header bg-info">Artikel</div>
 
                 <div class="card-body">
-                   <a class="btn btn-success btn-sm" href="/artikel/tambah"><i class="fa fa-plus">&nbsp Tambah Artikel</i></a><br><br>
+                   <a class="btn btn-success btn-sm" href="/artikel/tambah"><i class="fa fa-plus">&nbsp Create Article</i></a><br><br>
          <div class="table-responsive">
 	        <table  class="table table-striped table-bordered table-hover table-list data-table21">
                   <thead>
                     <tr style="vertical-align:middle;text-align:center;font-weigth:bold">
                         <th>No</th>
-                        <th>Judul</th>
-                        <th>Kategori</th>
-                        <th>Foto</th>
-                        <th>Aksi</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Language</th>
+                        <th>Action</th>
                       </tr> 
                   </thead>
                   
@@ -82,19 +82,10 @@
                   { data: 'DT_RowIndex', name:'DT_RowIndex'},
                   { data: 'judul', name: 'judul' },
                   { data: 'kategori', name: 'kategori' },
-                  { data: 'foto',
-                  'searchable': false,
-                  'orderable':false,
-                  'render': function (data, type, full, meta)
-                     {
-                       @foreach($settingweb as $s)
-                  return '<center><img src="{{ $s->link_web}}/'+data+'" style="height:100px;width:100px;"/></center>';
-                  @endforeach
-                     }
-                   },               
+                  { data: 'language', name: 'language' },       
                   { data: 'id', 
                    "render": function ( data, type, row, meta ) {
-                            return '<a href="/artikel/edit/'+data+'" title="edit" class="btn btn-xs btn-warning" style="margin-bottom:4px;margin-right:2px;"><i class="fa fa-edit"></i></a><a data-id="'+data+'" class="btn btn-xs btn-danger" style="margin-bottom:4px;" title="hapus" id="hapusartikel"><i class="fa fa-trash"></i></a>';
+                            return '<center><a href="/artikel/create_article/en/'+data+'" title="Tambah Artikel B.inggris" class="btn btn-xs btn-success" style="margin-bottom:4px;margin-right:2px;"><i class="fa fa-plus"></i></a><a href="/artikel/edit/'+data+'" title="edit" class="btn btn-xs btn-warning" style="margin-bottom:4px;margin-right:2px;"><i class="fa fa-edit"></i></a><a data-id="'+data+'" class="btn btn-xs btn-danger" style="margin-bottom:4px;" title="hapus" id="hapusartikel"><i class="fa fa-trash"></i></a></center>';
                        }
                 }
                 ]

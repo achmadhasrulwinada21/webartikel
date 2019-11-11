@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Banner extends Eloquent {
     protected $table = 'banner';
-    protected $fillable = ['nama','foto','ket','status','link'];
+    protected $fillable = ['foto','status','link','alt_teks'];
 }

@@ -3,7 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Adira Admin | Dashboard </title>
+    <?php 
+       use Illuminate\Support\Facades\DB; 
+         $settingweb = DB::table('settingweb')
+          ->where('kode', '001')->get(); 
+           ?>
+            @foreach ($settingweb as $sw)
+
+  <title>{{ $sw->title }} | Dashboard </title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,9 +48,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-      <?php 
-       use Illuminate\Support\Facades\DB; 
-       ?>
+     
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
@@ -77,14 +82,13 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+   
     <a href="{{ url('/home') }}" class="brand-link">
-       @foreach ($settingweb as $sw ) 
       <img src="{{ asset(''.$sw->logo_web.'')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
         <span class="brand-text font-weight-light">{{ $sw->nm_web }}</span>
-      @endforeach
-    </a>
-
+      </a>
+             @endforeach
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -147,37 +151,7 @@
         </li>
         <li class="nav-item">
           <a href="{{ url('/admin/settingweb') }}" class="nav-link {{ Request::is('admin/settingweb') ? 'active' : '' }}"><i class="nav-icon fas fa-cog"></i><p>Setting</p></a>
-        </li>
-
-
-           <?php 
-           $menuutama = DB::table('tabel_menu')
-           ->leftJoin('judul_menu', 'judul_menu.id', '=', 'tabel_menu.id_jdl')
-           ->where('childjudul', '9')->get(); 
-           ?>
-          @foreach ($menuutama as $menu)
-         <?php  $submenu = DB::table('tabel_menu')
-         ->leftJoin('judul_menu', 'judul_menu.id', '=', 'tabel_menu.id_jdl')
-         ->where('childjudul',$menu->id_jdl)->get();
-          if (count($submenu) > 0) {
-         ?>
-       <li class="nav-item has-treeview">
-          <a href="{{ url('/'.$menu->link.'') }}" class="nav-link"><i class="{{ $menu->icon }}">
-            </i><th>&nbsp{{ $menu->judul }}</th>
-          <i class="fas fa-angle-left right"></i></a>
-           <ul class="nav nav-treeview">
-           @foreach ($submenu as $sub) 
-            <li><a href="{{ url('/'.$sub->link.'') }}" class="nav-link"><i class="{{ $sub->icon }}"></i><th>&nbsp{{ $sub->judul }}</th></a></li>
-        @endforeach
-        </ul></li>
-   <?php } else { ?>
-          <li class="nav-item has-treeview"><a href="{{ url('/'.$menu->link.'') }}" class="nav-link"><i class="{{ $menu->icon }}"></i><th>&nbsp{{ $menu->judul }}</th></a></li>
-  <?php } ?>                       
- @endforeach
-
-
-
-          
+        </li>          
       </nav>
       <!-- /.sidebar-menu -->
     </div>

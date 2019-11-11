@@ -9,7 +9,8 @@
                  <div class="card-body">
 	<form action="/artikel/insert" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
-    	<input type="hidden" name="language" value="ID" class="form-control" placeholder="isi Judul...">
+        <input type="hidden" name="language" value="EN" class="form-control" placeholder="isi Judul...">
+        <input type="hidden" name="artikel_parent" value="{{ $artikel->id }}" class="form-control" placeholder="isi Judul...">
 		<label>Judul</label><br>
 		<input type="text" name="judul" class="form-control" placeholder="isi Judul...">
 		 @if($errors->has('judul'))

@@ -2,35 +2,14 @@
 @section('content')
 <br><br>
 <div class="container">
-       <div class="card-header bg-info">Edit Banner</div>
-    <div class="row">
-        <div class="col-md-8">
+       <div class="row">
+        <div class="col-md-12">
+             <div class="card-header bg-info">Edit Banner</div>
             <div class="card">
                 <div class="card-body">
                        <form method="post" action="/banner/update/{{ $banner->id }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
-                        <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" name="nama" class="form-control" value=" {{ $banner->nama }}">
-
-                            @if($errors->has('nama'))
-                                <div class="text-danger">
-                                    {{ $errors->first('nama')}}
-                                </div>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                        <label>Keterangan</label> 
-                         <textarea id="content" class="form-control" name="ket">{{ $banner->ket }}
-                        </textarea>
-                       </div>
-                </div>
-            </div>
-        </div>
-         <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
                       <div class="form-group">
                             <label>Link</label>
                             <input type="text" name="link" class="form-control" value=" {{ $banner->link }}">

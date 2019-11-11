@@ -41,22 +41,22 @@ class SettingwebController extends Controller
     }
 
     public function index(){
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
          return view('setup.settingweb',['settingweb' => $settingweb]);
     }
 
      public function perusahaan(){
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
          return view('setup.perusahaan',['settingweb' => $settingweb]);
     }
 
     public function sosmed(){
-        $settingweb = Settingweb::all();
+        $settingweb = Settingweb::find('001');
          return view('setup.sosmed',['settingweb' => $settingweb]);
     }
 
      public function show(){
-		$settingweb = Settingweb::all();
+		$settingweb = Settingweb::find('001');
         return view('layouts.index',['settingweb' => $settingweb]);
     }
 
@@ -86,6 +86,7 @@ class SettingwebController extends Controller
         }
           $settingweb->id = $request->id;
           $settingweb->title = $request->title;
+          $settingweb->alt_teks = $request->alt_teks;
           $settingweb->nm_web = $request->nm_web;
           $settingweb->link_web = $request->link_web; 
           $settingweb->save();
