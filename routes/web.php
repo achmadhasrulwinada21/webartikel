@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/test', function () {
-    return view('welcome');
+Route::get('/', function () {
+      return "test";
 });
 
 Auth::routes();

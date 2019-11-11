@@ -153,7 +153,7 @@ $PREFIX = config('app.app_prefix');
           <a href="{{ url('/admin/file') }}" class="nav-link {{ Request::is('admin/file') ? 'active' : '' }}"> <i class="nav-icon fas fa-laptop"></i><p>File</p></a>
         </li>
         <li class="nav-item">
-          <a href="{{ $PREFIX }}/workshop" class="nav-link {{ Request::is([$PREFIX . '/workshop', $PREFIX . '/workshop/create']) ? 'active' : '' }}"><i class="nav-icon fas fa-car"></i><p>Workshop</p></a>
+          <a href="/{{ $PREFIX }}/workshop" class="nav-link {{ Request::is([$PREFIX . '/workshop', $PREFIX . '/workshop/create']) ? 'active' : '' }}"><i class="nav-icon fas fa-car"></i><p>Workshop</p></a>
         </li>
         <li class="nav-item">
           <a href="{{ url('/admin/settingweb') }}" class="nav-link {{ Request::is('admin/settingweb') ? 'active' : '' }}"><i class="nav-icon fas fa-cog"></i><p>Setting</p></a>
