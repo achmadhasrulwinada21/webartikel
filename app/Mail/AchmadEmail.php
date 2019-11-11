@@ -31,11 +31,12 @@ class AchmadEmail extends Mailable
     public function build()
     {
        return $this->from('pengirim@mail.com')
+                   ->subject('Your Subject')
                    ->view('artikel.email')
                    ->with(
                     [
-                        'nama' => 'Achmad Hasrul Winada',
-                        'website' => 'www.test.com',
+                        'nama' => 'Adira',
+                        'website' => 'www.adira.com',
                                                
                      ]);
     }

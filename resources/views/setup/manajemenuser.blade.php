@@ -92,7 +92,7 @@
                            <p id="error_parajabatan" style="color:red;"></p>
                        </div>
                     </div>
-                     <div class="form-group row">
+                     {{-- <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -106,7 +106,7 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
-                        </div>
+                        </div> --}}
                    <br>
                     <div class="col-sm-offset-2 col-sm-10" style="margin-left:65%">
                      <button type="submit" class="btn btn-primary save" id="saveBtn" value="create">Register
@@ -343,13 +343,13 @@
 	document.getElementById( "error_parajabatan" ).innerHTML = error;
 	return false;
 	}
-    var password = document.getElementById( "password" );
-	if( password.value == "" || password.value >= 8 )
-	{
-	error = " Password Minimal 8 Digits. ";
-	document.getElementById( "error_parapwd" ).innerHTML = error;
-	return false;
-    }
+    // var password = document.getElementById( "password" );
+	// if( password.value == "" || password.value >= 8 )
+	// {
+	// error = " Password Minimal 8 Digits. ";
+	// document.getElementById( "error_parapwd" ).innerHTML = error;
+	// return false;
+    // }
 	else
 	{
 	return true;
