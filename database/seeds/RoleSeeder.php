@@ -14,6 +14,8 @@ class RoleSeeder extends Seeder
     {
         $role = new Role;
         $role->name = "Administrator";
+        $role->slug = Str::slug("administrator","-");
+        $role->description = "buat bikin admin";
         $role->save();
     }
 }

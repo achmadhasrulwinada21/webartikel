@@ -80,7 +80,7 @@
                    "render": function ( data, type, row, meta ) {
                             return '<center><a href="/banner/edit/'+data+'" title="edit" class="btn btn-xs btn-warning" style="margin-bottom:4px;margin-right:2px;"><i class="fa fa-edit"></i></a><a data-id="'+data+'" class="btn btn-xs btn-danger" style="margin-bottom:4px;" title="hapus" id="hapusbanner"><i class="fa fa-trash"></i></a></center>';
                        }
-                }
+                  }
                 ]
           });
 

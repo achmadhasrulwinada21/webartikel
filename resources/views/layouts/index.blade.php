@@ -1,3 +1,9 @@
+<?php
+
+$PREFIX = config('app.app_prefix');
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,11 +84,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('/home') }}" class="brand-link">
-       @foreach ($settingweb as $sw ) 
-      <img src="{{ asset(''.$sw->logo_web.'')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ $sw->nm_web }}</span>
-      @endforeach
+
     </a>
 
     <!-- Sidebar -->
@@ -104,7 +106,7 @@
           <a href="{{ url('/home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p> </a>
         </li>
         <li class="nav-item">
-          <a href="{{ url('/admin/roles') }}" class="nav-link {{ Request::is('admin/roles') ? 'active' : '' }}"><i class="nav-icon fas fa-user-circle"></i><p>Roles</p></a>
+          <a href="/{{ $PREFIX }}/role" class="nav-link {{ Request::is($PREFIX . '/role') ? 'active' : '' }}"><i class="nav-icon fas fa-users-cog"></i><p>Roles</p></a>
         </li>
         <li class="nav-item">
           <a href="{{ url('/admin/manajemenuser') }}" class="nav-link {{ Request::is('admin/manajemenuser') ? 'active' : '' }}"><i class="nav-icon fas fa-user-circle"></i><p>User</p></a>
@@ -145,35 +147,10 @@
         <li class="nav-item">
           <a href="{{ url('/admin/file') }}" class="nav-link {{ Request::is('admin/file') ? 'active' : '' }}"> <i class="nav-icon fas fa-laptop"></i><p>File</p></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="{{ url('/admin/settingweb') }}" class="nav-link {{ Request::is('admin/settingweb') ? 'active' : '' }}"><i class="nav-icon fas fa-cog"></i><p>Setting</p></a>
-        </li>
-
-
-           <?php 
-           $menuutama = DB::table('tabel_menu')
-           ->leftJoin('judul_menu', 'judul_menu.id', '=', 'tabel_menu.id_jdl')
-           ->where('childjudul', '9')->get(); 
-           ?>
-          @foreach ($menuutama as $menu)
-         <?php  $submenu = DB::table('tabel_menu')
-         ->leftJoin('judul_menu', 'judul_menu.id', '=', 'tabel_menu.id_jdl')
-         ->where('childjudul',$menu->id_jdl)->get();
-          if (count($submenu) > 0) {
-         ?>
-       <li class="nav-item has-treeview">
-          <a href="{{ url('/'.$menu->link.'') }}" class="nav-link"><i class="{{ $menu->icon }}">
-            </i><th>&nbsp{{ $menu->judul }}</th>
-          <i class="fas fa-angle-left right"></i></a>
-           <ul class="nav nav-treeview">
-           @foreach ($submenu as $sub) 
-            <li><a href="{{ url('/'.$sub->link.'') }}" class="nav-link"><i class="{{ $sub->icon }}"></i><th>&nbsp{{ $sub->judul }}</th></a></li>
-        @endforeach
-        </ul></li>
-   <?php } else { ?>
-          <li class="nav-item has-treeview"><a href="{{ url('/'.$menu->link.'') }}" class="nav-link"><i class="{{ $menu->icon }}"></i><th>&nbsp{{ $menu->judul }}</th></a></li>
-  <?php } ?>                       
- @endforeach
+        </li> -->
+        </ul>
 
 
 

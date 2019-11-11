@@ -31,8 +31,24 @@ class AppServiceProvider extends ServiceProvider
                 "description"       => "to Edit role"
             ],
             [
-                "name"              => "Delete Role",
-                "description"       => "to Delete role"
+                "name"              => "Delete User",
+                "description"       => "to Delete User"
+            ],
+            [
+                "name"              => "View User",
+                "description"       => "to view User"
+            ],
+            [
+                "name"              => "Create User",
+                "description"       => "to Create User"
+            ],
+            [
+                "name"              => "Edit User",
+                "description"       => "to Edit User"
+            ],
+            [
+                "name"              => "Delete User",
+                "description"       => "to Delete User"
             ]
         ];
 
