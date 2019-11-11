@@ -8,8 +8,11 @@ use App\Model\Setup\Manajemenuser;
 use App\Model\Setup\Settingweb;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use DataTables;
 use Session;
+use Mail;
+use App\Mail\AchmadEmail;
 
 class ManajemenuserController extends Controller
 {
@@ -59,18 +62,22 @@ class ManajemenuserController extends Controller
     	$this->validate($request,[
 		    'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'jabatan' => ['required', 'in:admin,member'],
-    	]);
- 
+        ]);
+        
+          $password = Str::random(8);
+          $request->pwd =$password;
+
+           Mail::to($request->email)->send(new AchmadEmail($request));
+
         Manajemenuser::create([
 			'name' => $request['name'],
             'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'password' => bcrypt($password),
             'jabatan' => $request['jabatan'],
     	]);
- 
-     return response()->json(['success'=>'saved successfully.']);
+        
+         return response()->json(['success'=>'saved successfully.']);
     }
 
      public function show($id)
@@ -112,7 +119,7 @@ public function update2(Request $request){
     Manajemenuser::updateOrCreate(['id' => $request->id],
 
                 [
-                   'password' => Hash::make($request->password),
+                   'password' => bcrypt($request->password),
                                     ]
                 );        
     return response()->json(['success'=>'saved successfully.']);
