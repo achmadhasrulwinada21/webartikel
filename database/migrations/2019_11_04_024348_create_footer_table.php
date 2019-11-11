@@ -13,7 +13,7 @@ class CreateFooterTable extends Migration
      */
     public function up()
     {
-        Schema::create('footer', function (Blueprint $table) {
+        Schema::create('footer_brand', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
             $table->string('foto');
