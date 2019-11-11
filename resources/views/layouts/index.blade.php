@@ -3,20 +3,13 @@
 $PREFIX = config('app.app_prefix');
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <?php 
-       use Illuminate\Support\Facades\DB; 
-         $settingweb = DB::table('settingweb')
-          ->where('kode', '001')->get(); 
-           ?>
-            @foreach ($settingweb as $sw)
 
-  <title>{{ $sw->title }} | Dashboard </title>
+  <title>Adira Admin | Dashboard </title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,11 +83,11 @@ $PREFIX = config('app.app_prefix');
     <!-- Brand Logo -->
    
     <a href="{{ url('/home') }}" class="brand-link">
-      <img src="{{ asset(''.$sw->logo_web.'')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-      <span class="brand-text font-weight-light">{{ $sw->nm_web }}</span>
+      {{-- <img src="{{ asset(''.$sw->logo_web.'')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8"> --}}
+      {{-- <span class="brand-text font-weight-light">{{ $sw->nm_web }}</span> --}}
     </a>
-             @endforeach
+    
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -103,7 +96,7 @@ $PREFIX = config('app.app_prefix');
           {{-- <img src="{{ asset('assets/dist/img/AdminLTELogo.png')}}" class="img-circle elevation-2" alt="User Image"> --}}
         </div>
         <div class="info">
-          <a href="{{ url('/home') }}" class="d-block">Login as {{ Auth::user()->name }}</a>
+          <a href="{{ url('/management') }}" class="d-block">Login as {{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -111,7 +104,7 @@ $PREFIX = config('app.app_prefix');
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">
-          <a href="{{ url('/home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p> </a>
+          <a href="{{ url('/management') }}" class="nav-link {{ Request::is('management') ? 'active' : '' }}"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p> </a>
         </li>
         <li class="nav-item">
           <a href="/{{ $PREFIX }}/role" class="nav-link {{ Request::is($PREFIX . '/role') ? 'active' : '' }}"><i class="nav-icon fas fa-users-cog"></i><p>Roles</p></a>
@@ -155,9 +148,12 @@ $PREFIX = config('app.app_prefix');
         <li class="nav-item">
           <a href="{{ url('/admin/file') }}" class="nav-link {{ Request::is('admin/file') ? 'active' : '' }}"> <i class="nav-icon fas fa-laptop"></i><p>File</p></a>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item">
+          <a href="{{ $PREFIX }}/workshop" class="nav-link {{ Request::is([$PREFIX . '/workshop', $PREFIX . '/workshop/create']) ? 'active' : '' }}"><i class="nav-icon fas fa-car"></i><p>Workshop</p></a>
+        </li>
+        <li class="nav-item">
           <a href="{{ url('/admin/settingweb') }}" class="nav-link {{ Request::is('admin/settingweb') ? 'active' : '' }}"><i class="nav-icon fas fa-cog"></i><p>Setting</p></a>
-        </li> -->
+        </li>
         </ul>
 
 

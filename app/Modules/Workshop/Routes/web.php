@@ -11,8 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'workshop'], function () {
-    Route::get('/', function () {
-        dd('This is the Workshop module index page. Build something great!');
-    });
+Route::group(['prefix' => config('app.app_prefix')], function () {
+    Route::get('/workshop/all', 'WorkshopController@listAll');
+    Route::resource('/workshop', 'WorkshopController');
 });
